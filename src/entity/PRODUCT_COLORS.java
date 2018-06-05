@@ -44,19 +44,13 @@ public class PRODUCT_COLORS {
 		this.img_thickness = img_thickness;
 	}
 
-
-
 	public PRODUCT getProduct_colors() {
 		return product_colors;
 	}
-
-
-
+	
 	public void setProduct_colors(PRODUCT product_colors) {
 		this.product_colors = product_colors;
 	}
-
-
 
 	public int getId() {
 		return id;

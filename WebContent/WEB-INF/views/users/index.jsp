@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,8 +25,8 @@
 		<jsp:include page="patterns/_head.jsp"></jsp:include>
 		<div class="row menu">
 			<ul class="nav nav-pills">
-				<li class="nav-item"><a class="nav-link active" href="home.htm">
-						<i class="fa fa-home"></i>
+				<li class="nav-item"><a class="nav-link active"
+					href="home.htm?start=0"> <i class="fa fa-home"></i>
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="oppo.htm">OPPO</a>
 				</li>
@@ -74,28 +75,36 @@
 			</div>
 		</div>
 		<div class="row product-list">
-			<%-- <c:forEach var="p" items="${lst_Allproduct}" varStatus="status">
+			<c:forEach var="p" items="${lst_AllperPage}" varStatus="status">
 				<div class="col-4">
-					<div class="product-div">
-						<img src="images/">
-						<div class="product-title">${p.name}</div>
-						<div class="product-price">${p.price}</div>
-					</div>
+					<a class="product-infomation" href="product-info.htm?pId=${p.id}">
+						<div class="product-div">
+							<img src="images/${p.product_colors.get(0).img_front}">
+							<div class="product-title">${p.name}</div>
+							<div class="product-price">
+								<fmt:formatNumber value="${p.price}" pattern="###,###"
+									type="number" />
+								đ
+							</div>
+						</div>
+					</a>
 				</div>
 			</c:forEach>
- --%>
 		</div>
 		<div class="row page-navigation">
 			<nav aria-label="Page navigation example">
 			<ul class="pagination justify-content-center">
-				<li class="page-item"><a class="page-link" href="#"
+				<li class="page-item"><a class="page-link"
+					href="home.htm?start=${(startIndex-9>=0)?startIndex-9:'0'}"
 					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 						<span class="sr-only">Previous</span>
 				</a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#"
+				<c:forEach var="page" varStatus="stt" begin="0" end="${pageNumber}">
+					<li class="page-item"><a class="page-link"
+						href="home.htm?start=${stt.index*9}">${stt.index+1}</a></li>
+				</c:forEach>
+				<li class="page-item"><a class="page-link"
+					href="home.htm?start=${(startIndex+9>=pageNumber*9)?pageNumber*9:startIndex+9}"
 					aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
 						class="sr-only">Next</span>
 				</a></li>

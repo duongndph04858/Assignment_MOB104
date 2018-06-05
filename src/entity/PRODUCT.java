@@ -1,8 +1,7 @@
 package entity;
 
 import java.util.ArrayList;
-import java.util.Collection;
-
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,9 +16,9 @@ public class PRODUCT {
 	@Column(name="id")
 	private String id;
 	@OneToMany(mappedBy="product_colors",fetch= FetchType.EAGER)
-	private Collection<PRODUCT_COLORS> product_colors;
+	private List<PRODUCT_COLORS> product_colors = new ArrayList<>();
 	@OneToMany(mappedBy="product_properties",fetch= FetchType.EAGER)
-	private Collection<PROPERTIES> product_properties;
+	private List<PROPERTIES> product_properties = new ArrayList<>();
 	@Column(name="name")
 	private String name;
 	@Column(name="price")
@@ -67,16 +66,16 @@ public class PRODUCT {
 	public void setProducer(String producer) {
 		this.producer = producer;
 	}
-	public Collection<PRODUCT_COLORS> getProduct_colors() {
+	public List<PRODUCT_COLORS> getProduct_colors() {
 		return product_colors;
 	}
-	public void setProduct_colors(Collection<PRODUCT_COLORS> product_colors) {
+	public void setProduct_colors(List<PRODUCT_COLORS> product_colors) {
 		this.product_colors = product_colors;
 	}
-	public Collection<PROPERTIES> getProduct_properties() {
+	public List<PROPERTIES> getProduct_properties() {
 		return product_properties;
 	}
-	public void setProduct_properties(Collection<PROPERTIES> product_properties) {
+	public void setProduct_properties(List<PROPERTIES> product_properties) {
 		this.product_properties = product_properties;
 	}
 	public int getAmount() {
@@ -91,5 +90,4 @@ public class PRODUCT {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
 }

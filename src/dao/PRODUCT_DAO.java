@@ -26,6 +26,7 @@ public class PRODUCT_DAO {
 		return list_Allproduct;
 	}
 	
+	
 	@Transactional
 	public List<PRODUCT> getByProducer(String producer) {
 		Session session = factory.getCurrentSession();
@@ -37,7 +38,7 @@ public class PRODUCT_DAO {
 	}
 	
 	@Transactional
-	public List<PRODUCT> getAllperPage(int start) {
+	public List<PRODUCT> getAllPerPage(int start) {
 		Session session = factory.getCurrentSession();
 		String hql = "from PRODUCT";
 		Query query = session.createQuery(hql);
@@ -45,6 +46,28 @@ public class PRODUCT_DAO {
 		query.setMaxResults(9);
 		List<PRODUCT> list_product = query.list();
 		return list_product;
+	}
+	
+	@Transactional
+	public List<PRODUCT> getProducerPerPage(int start, String producer) {
+		Session session = factory.getCurrentSession();
+		String hql = "from PRODUCT where producer=:producer";
+		Query query = session.createQuery(hql);
+		query.setParameter("producer", producer);
+		query.setFirstResult(start);
+		query.setMaxResults(9);
+		List<PRODUCT> list_product = query.list();
+		return list_product;
+	}
+	
+	@Transactional
+	public PRODUCT getProductByID(String id) {
+		Session session = factory.getCurrentSession();
+		String hql = "from PRODUCT where id=:id";
+		Query query = session.createQuery(hql);
+		query.setParameter("id", id);
+		PRODUCT product = (PRODUCT) query.uniqueResult();
+		return product;
 	}
 	
 }

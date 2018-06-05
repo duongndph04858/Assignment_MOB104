@@ -171,3 +171,6 @@
 #carouselExampleIndicators{
     width: 100%;
 }
+.product-infomation:hover{
+	text-decoration: none;
+}

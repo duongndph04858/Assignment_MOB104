@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import dao.PRODUCT_DAO;
 import entity.PRODUCT;
@@ -15,9 +16,13 @@ public class HomeController {
 	PRODUCT_DAO product_dao;
 
 	@RequestMapping(value="home")
-	public String home(ModelMap md) {
-		List<PRODUCT> lst_Allproduct= product_dao.getAll();
-		md.addAttribute("lst_Allproduct", lst_Allproduct);
+	public String home(ModelMap md,@RequestParam(value="start",defaultValue="0")int start) {
+		List<PRODUCT> list_All = product_dao.getAll();
+		List<PRODUCT> lst_AllperPage= product_dao.getAllPerPage(start);
+		md.addAttribute("lst_AllperPage", lst_AllperPage);
+		int pageNumber = Math.round(list_All.size()/9);
+		md.addAttribute("pageNumber",pageNumber );
+		md.addAttribute("startIndex", start);
 		return "users/index";
 	}
 	
@@ -28,12 +33,7 @@ public class HomeController {
 		return "users/iphone";
 	}
 
-	
-	@RequestMapping("product-info")
-	public String information(ModelMap md) {
-		return "users/product-info";
-	}
-	
+
 	@RequestMapping("xiaomi")
 	public String lenovo(ModelMap md) {
 		List<PRODUCT> lstXiaomi= product_dao.getByProducer("Xiaomi");
@@ -61,4 +61,12 @@ public class HomeController {
 		md.addAttribute("lstSamsung", lstSamsung);
 		return "users/samsung";
 	}
+	
+	@RequestMapping("product-info")
+	public String information(ModelMap md,@RequestParam("pId") String id) {
+		PRODUCT product = product_dao.getProductByID(id);
+		md.addAttribute("product", product);
+		return "users/product-info";
+	}
+	
 }
