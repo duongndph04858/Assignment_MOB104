@@ -1,5 +1,5 @@
 $().ready(function () {
-            $("#demoForm").validate({
+            $("#form-register").validate({
                 onfocusout: false,
                 onkeyup: false,
                 onclick: false,
@@ -13,8 +13,8 @@ $().ready(function () {
                         minlength: 8
                     },
                     "register-repassword": {
+                    	required: true,
                         equalTo: "#inputMatKhauDK",
-                        minlength: 8
                     },
                     "register-email":{
                         required: true,
@@ -23,19 +23,19 @@ $().ready(function () {
                 },
                 messages: {
                     "register-username": {
-                        required: "Vui lòng điền tên đăng nhập",
+                    	required: "Vui lòng không bỏ trống trường này!",
                         maxlength: "Tối đa 15 ký tự"
                     },
                     "register-password": {
-                        required: "Phải điền mật khẩu",
-                        minlength: "Tối thiểu 8 ký tự"
+                    	required: "Vui lòng không bỏ trống trường này!",
+                    	 minlength: "Mật khẩu yêu cầu tối thiểu 8 ký tự"
                     },
                     "register-repassword": {
-                        equalTo: "Mật lại mật khẩu phải giống với mật khẩu",
-                        minlength: "Tối thiểu 8 ký tự"
+                    	required: "Vui lòng không bỏ trống trường này!",
+                        equalTo: "Mật khẩu không khớp!",
                     },
                     "register-email":{
-                        required: "Phải nhập email",
+                    	required: "Vui lòng không bỏ trống trường này!",
                         email: "Email phải đúng định dạng"
                     }
                 }

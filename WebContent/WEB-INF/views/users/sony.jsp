@@ -142,5 +142,9 @@
 	<script src="js/jquery-3.2.1.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script
+		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
+		type="text/javascript"></script>
+	<script src="js/validate.js"></script>	
 </body>
 </html>

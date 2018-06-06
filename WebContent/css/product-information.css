@@ -177,3 +177,18 @@ background: #007bff;
 	width: 33%;
 	float: left;
 }
+.buy{
+	text-align:center;
+	width: 100px;
+	line-height: 40px;
+	background: #f80;
+
+}
+
+.buy a{
+		color: #fff ;
+}
+.buy:hover a{
+	color: #000;
+	text-decoration: none;
+}

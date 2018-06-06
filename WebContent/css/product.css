@@ -170,7 +170,10 @@
 
 .product-infomation:hover{
 	text-decoration: none;
-
+}
 label.error{
 	color: red;
+	line-height: 20px;
+	padding-top: 5px;
+	margin-bottom: 0px;
 }

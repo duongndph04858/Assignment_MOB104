@@ -134,5 +134,6 @@
 	<script
 		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
 		type="text/javascript"></script>
+	<script src="js/validate.js"></script>	
 </body>
 </html>

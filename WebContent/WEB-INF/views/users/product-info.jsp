@@ -197,8 +197,9 @@
 					</div>
 				</div>
 				<div class="row buy-product d-flex justify-content-center">
-					<button style="font-weight: bold" class="btn btn-warning">Mua
-						hàng</button>
+					<div class="buy">
+					<a href="add-to-cart.htm?pID=${product.id }">Mua hàng</a>
+					</div>		
 				</div>
 				<div class="row buy-product">
 					Gọi đặt mua ngay &nbsp; <span style="color: blue"> 1998 997
@@ -314,5 +315,9 @@
 	<script src="js/jquery-3.2.1.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script
+		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
+		type="text/javascript"></script>
+	<script src="js/validate.js"></script>	
 </body>
 </html>
