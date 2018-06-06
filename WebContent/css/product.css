@@ -121,9 +121,7 @@
 	color: #ce0808;
 	font-weight: bold;
 }
-.page-navigation nav {
-	margin-left: 950px;
-}
+
 .footer {
 	height: 150px;
 	background-color: #53c8e7;
@@ -168,4 +166,8 @@
 }
 .action-item:hover{
 	color: #6141f4 !important;
+}
+
+.product-infomation:hover{
+	text-decoration: none;
 }

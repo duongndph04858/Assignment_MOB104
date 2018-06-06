@@ -1,6 +1,7 @@
 package dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,5 +29,19 @@ public class USER_DAO {
 		query.setParameter("username", username);
 		USERS usr = (USERS) query.uniqueResult();
 		return usr;
+	}
+	
+	public void insertUser(USERS user) {
+		Session  session = factory.openSession();
+		Transaction tr = session.beginTransaction();
+		try {
+			session.save(user);
+			tr.commit();			
+		} catch (Exception e) {
+			tr.rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
 	}
 }

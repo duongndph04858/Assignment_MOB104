@@ -56,7 +56,14 @@ public class USERS {
 		this.phone = phone;
 		this.birthday = birthday;
 	}
+		
 
+	public USERS(String username, String password, String email) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
 
 
 	public String getUsername() {

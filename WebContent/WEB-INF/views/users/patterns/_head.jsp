@@ -31,14 +31,19 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-			<ul style="z-index: 1;">
-				<li style="list-style: none" id="user"><a>&nbsp; Xin chào, ${user }</a>
-					<ul class="user-action">
-						<li style="list-style: none"><a class="action-item"><i style="font-size: 20px" class="fa fa-address-card-o" aria-hidden="true"></i> &nbsp; Thông tin cá nhân&nbsp;&nbsp;</a></li>
-						<li style="list-style: none"><a class="action-item" data-toggle="modal" data-target="#modalDangxuat"><i style="font-size: 20px" class="fa fa-sign-out" aria-hidden="true"></i> &nbsp; &nbsp;Đăng xuất</a></li>
-					</ul>
-				</li>
-			</ul>	
+				<ul style="z-index: 1;">
+					<li style="list-style: none" id="user"><a>&nbsp; Xin chào,
+							${user }</a>
+						<ul class="user-action">
+							<li style="list-style: none"><a class="action-item"><i
+									style="font-size: 20px" class="fa fa-address-card-o"
+									aria-hidden="true"></i> &nbsp; Thông tin cá nhân&nbsp;&nbsp;</a></li>
+							<li style="list-style: none"><a class="action-item"
+								data-toggle="modal" data-target="#modalDangxuat"><i
+									style="font-size: 20px" class="fa fa-sign-out"
+									aria-hidden="true"></i> &nbsp; &nbsp;Đăng xuất</a></li>
+						</ul></li>
+				</ul>
 			</c:otherwise>
 		</c:choose>
 
@@ -98,7 +103,9 @@
 									<div class="offset-1 col-11">
 										<button type="button"
 											style="width: 100%; text-transform: uppercase"
-											class="btn btn-danger">Đăng ký ngay</button>
+											class="btn btn-danger" data-dismiss="modal"
+											data-toggle="modal" data-target="#modalDangKy">Đăng
+											ký ngay</button>
 									</div>
 								</div>
 							</div>
@@ -108,7 +115,8 @@
 			</div>
 		</div>
 		<!-- Đăng xuất -->
-		<div class="modal fade" id="modalDangxuat" tabindex="-1" role="dialog" aria-labelledby="modalDangxuatLabel" aria-hidden="true">
+		<div class="modal fade" id="modalDangxuat" tabindex="-1" role="dialog"
+			aria-labelledby="modalDangxuatLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -122,10 +130,10 @@
 						<span>Bạn thực sự muốn đăng xuất ?</span>
 					</div>
 					<div class="modal-footer">
-					<form action="logout.htm" method="post">
-						<button name="yes" class="btn btn-danger">Đăng xuất</button>
-						<button name="no" class="btn btn-primary">Hủy bỏ</button>
-					</form>	
+						<form action="logout.htm" method="post">
+							<button name="yes" class="btn btn-danger">Đăng xuất</button>
+							<button name="no" class="btn btn-primary">Hủy bỏ</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -145,47 +153,51 @@
 					<div class="modal-body">
 						<div class="row" style="margin-top: 10px">
 							<div class="col-8" style="border-right: solid 1px #929090">
-								<form class="form-horizontal" action="">
-									<div class="row"
-										style="margin-left: 300px; margin-bottom: 10px; color: red">Bạn
-										bắt buộc nhập đầy đủ thông tin bên dưới</div>
-									<div class="form-group row">
-										<label for="inputTenDangNhapDK" class="control-label col-3">Tên
-											đăng nhập:</label>
-										<div class="col-9">
-											<input type="text" class="form-control"
-												id="inputTenDangNhapDK">
+								<form id="form-register" class="form-horizontal"
+									action="register.htm" method="post">
+									<fieldset>
+										<div class="row"
+											style="margin-left: 300px; margin-bottom: 10px; color: red">Bạn
+											bắt buộc nhập đầy đủ thông tin bên dưới</div>
+										<div class="form-group row">
+											<label for="inputTenDangNhapDK" class="control-label col-3">Tên
+												đăng nhập:</label>
+											<div class="col-9">
+												<input name="register-username" type="text"
+													class="form-control" id="inputTenDangNhapDK" required>
+											</div>
 										</div>
-									</div>
-									<div class="form-group row">
-										<label for="inputMatKhauDK" class="control-label col-3">Mật
-											khẩu:</label>
-										<div class="col-9">
-											<input type="password" class="form-control"
-												id="inputMatKhauDK">
+										<div class="form-group row">
+											<label for="inputMatKhauDK" class="control-label col-3">Mật
+												khẩu:</label>
+											<div class="col-9">
+												<input name="register-password" type="password"
+													class="form-control" id="inputMatKhauDK" required>
+											</div>
 										</div>
-									</div>
-									<div class="form-group row">
-										<label for="inputNLMatKhau" class="control-label col-3">Nhập
-											lại mật khẩu:</label>
-										<div class="col-9">
-											<input type="password" class="form-control"
-												id="inputNLMatKhau">
+										<div class="form-group row">
+											<label for="inputNLMatKhau" class="control-label col-3">Nhập
+												lại mật khẩu:</label>
+											<div class="col-9">
+												<input name="register-repassword" type="password"
+													class="form-control" id="inputNLMatKhau" required>
+											</div>
 										</div>
-									</div>
-									<div class="form-group row">
-										<label for="inputEmail" class="control-label col-3">Email:</label>
-										<div class="col-9">
-											<input type="email" class="form-control" id="inputEmail">
+										<div class="form-group row">
+											<label for="inputEmail" class="control-label col-3">Email:</label>
+											<div class="col-9">
+												<input name="register-email" type="email"
+													class="form-control" id="inputEmail" required>
+											</div>
 										</div>
-									</div>
-									<div class="form-group row">
-										<div class="offset-4 col-8">
-											<button type="submit"
-												style="width: 50%; text-transform: uppercase"
-												class="btn btn-primary">Đăng ký</button>
+										<div class="form-group row">
+											<div class="offset-4 col-8">
+												<button type="submit"
+													style="width: 50%; text-transform: uppercase"
+													class="btn btn-primary">Đăng ký</button>
+											</div>
 										</div>
-									</div>
+									</fieldset>
 								</form>
 							</div>
 							<div class="col-4">
@@ -196,7 +208,9 @@
 									<div class="offset-1 col-11">
 										<button type="button"
 											style="width: 100%; text-transform: uppercase"
-											class="btn btn-danger">Đăng nhập ngay</button>
+											class="btn btn-danger" data-dismiss="modal"
+											data-toggle="modal" data-target="#modalDangNhap">Đăng
+											nhập ngay</button>
 									</div>
 								</div>
 							</div>
@@ -258,7 +272,7 @@
 		</div>
 		<div class="col hotline">Hotline: 1998 9794</div>
 		<div class="col cart">
-			<a href="#"> <i class="fa fa-shopping-cart"></i> <span>Giỏ
+			<a href="cart.htm"> <i class="fa fa-shopping-cart"></i> <span>Giỏ
 					hàng</span>
 			</a>
 		</div>

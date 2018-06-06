@@ -69,4 +69,8 @@ public class HomeController {
 		return "users/product-info";
 	}
 	
+	@RequestMapping("cart")
+	public String cart() {
+		return "users/cart";
+	}
 }
