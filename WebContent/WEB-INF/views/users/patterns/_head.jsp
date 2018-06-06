@@ -145,7 +145,7 @@
 					<div class="modal-body">
 						<div class="row" style="margin-top: 10px">
 							<div class="col-8" style="border-right: solid 1px #929090">
-								<form class="form-horizontal" action="">
+								<form class="form-horizontal" id="demoForm" action="">
 									<div class="row"
 										style="margin-left: 300px; margin-bottom: 10px; color: red">Bạn
 										bắt buộc nhập đầy đủ thông tin bên dưới</div>
@@ -154,7 +154,7 @@
 											đăng nhập:</label>
 										<div class="col-9">
 											<input type="text" class="form-control"
-												id="inputTenDangNhapDK">
+												id="inputTenDangNhapDK" name="TDN">
 										</div>
 									</div>
 									<div class="form-group row">
@@ -162,7 +162,7 @@
 											khẩu:</label>
 										<div class="col-9">
 											<input type="password" class="form-control"
-												id="inputMatKhauDK">
+												id="inputMatKhauDK" name="MK">
 										</div>
 									</div>
 									<div class="form-group row">
@@ -170,13 +170,13 @@
 											lại mật khẩu:</label>
 										<div class="col-9">
 											<input type="password" class="form-control"
-												id="inputNLMatKhau">
+												id="inputNLMatKhau" name="NLMK">
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="inputEmail" class="control-label col-3">Email:</label>
 										<div class="col-9">
-											<input type="email" class="form-control" id="inputEmail">
+											<input type="email" class="form-control" id="inputEmail" name="EM">
 										</div>
 									</div>
 									<div class="form-group row">
@@ -268,5 +268,6 @@
 	<script src="js/jquery-3.2.1.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	
 </body>
 </html>

@@ -169,3 +169,7 @@
 .action-item:hover{
 	color: #6141f4 !important;
 }
+
+label.error{
+	color: red;
+}

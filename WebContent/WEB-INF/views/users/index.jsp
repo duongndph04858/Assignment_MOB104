@@ -131,6 +131,53 @@
 	<script src="js/jquery-3.2.1.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-
+	<script
+		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
+		type="text/javascript"></script>
+	<script type="text/javascript">
+        $().ready(function () {
+            $("#demoForm").validate({
+                onfocusout: false,
+                onkeyup: false,
+                onclick: false,
+                rules: {
+                    "TDN": {
+                        required: true,
+                        maxlength: 15
+                    },
+                    "MK": {
+                        required: true,
+                        minlength: 8
+                    },
+                    "NLMK": {
+                        equalTo: "#inputMatKhauDK",
+                        minlength: 8
+                    },
+                    "EM":{
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    "TDN": {
+                        required: "Phải điền tên đăng nhập",
+                        maxlength: "Tối đa 15 ký tự"
+                    },
+                    "MK": {
+                        required: "Phải điền mật khẩu",
+                        minlength: "Tối thiểu 8 ký tự"
+                    },
+                    "NLMK": {
+                        equalTo: "Mật lại mật khẩu phải giống với mật khẩu",
+                        minlength: "Tối thiểu 8 ký tự"
+                    },
+                    "EM":{
+                        required: "Phải nhập email",
+                        email: "Email phải đúng định dạng"
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
