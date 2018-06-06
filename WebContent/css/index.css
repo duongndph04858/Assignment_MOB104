@@ -174,3 +174,7 @@
 .product-infomation:hover{
 	text-decoration: none;
 }
+
+label.error{
+	color: red;
+}
