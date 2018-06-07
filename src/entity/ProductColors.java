@@ -10,14 +10,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="PRODUCT_COLORS")
-public class PRODUCT_COLORS {
+public class ProductColors {
 	@Id
 	@GeneratedValue
 	@Column(name="id")
 	private int id;
 	@ManyToOne
 	@JoinColumn(name="product_id")
-	private PRODUCT product_colors;
+	private Product product;
 	@Column(name="color")
 	private String color;
 	@Column(name="img_front") 
@@ -26,30 +26,30 @@ public class PRODUCT_COLORS {
 	private String img_behind;
 	@Column(name="img_thickness") 
 	private String img_thickness;
-	public PRODUCT_COLORS() {
+	public ProductColors() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	
 
-	public PRODUCT_COLORS(int id, PRODUCT product_colors, String color, String img_front, String img_behind,
+	public ProductColors(int id, Product product, String color, String img_front, String img_behind,
 			String img_thickness) {
 		super();
 		this.id = id;
-		this.product_colors = product_colors;
+		this.product = product;
 		this.color = color;
 		this.img_front = img_front;
 		this.img_behind = img_behind;
 		this.img_thickness = img_thickness;
 	}
 
-	public PRODUCT getProduct_colors() {
-		return product_colors;
+	public Product getProduct() {
+		return product;
 	}
 	
-	public void setProduct_colors(PRODUCT product_colors) {
-		this.product_colors = product_colors;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public int getId() {

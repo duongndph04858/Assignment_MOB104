@@ -6,26 +6,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import dao.Cart_DAO;
-import dao.PRODUCT_DAO;
+import dao.CartDao;
+import dao.ProductColorDao;
+import dao.ProductDao;
 import entity.Cart;
-import entity.PRODUCT;
+import entity.Product;
 
 @Controller
 public class CartController {
 	@Autowired
-	PRODUCT_DAO product_dao;
+	ProductDao productDao;
+	@Autowired
+	ProductColorDao pclD;
 
 	@RequestMapping("add-to-cart")
-	public String addToCart(HttpSession session, ModelMap md, @RequestParam String pID,HttpServletRequest request) {	
+	public String addToCart(HttpSession session, ModelMap md, @RequestParam String pID,HttpServletRequest request/*,
+			@RequestParam String color*/) {	
 		session = request.getSession(true);
-		Cart_DAO shop=(Cart_DAO) session.getAttribute("shop");
-		PRODUCT product = product_dao.getProductByID(pID);
+		CartDao shop=(CartDao) session.getAttribute("shop");
+		Product product = productDao.getProductByID(pID);
 		if (shop==null) {
-			shop = new Cart_DAO();
+			shop = new CartDao();
 		} 		
-		shop.addToCart(new Cart(product.getId(),product));
 		session.setAttribute("shop", shop);
 		return "users/cart";
 	}

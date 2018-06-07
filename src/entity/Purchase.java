@@ -14,32 +14,32 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="PURCHASE")
-public class PURCHASE {
+public class Purchase {
 	@Id
 	@Column(name="id")
 	@GeneratedValue
 	private int id;
 	@OneToMany(mappedBy="purchase_id",fetch  = FetchType.EAGER)
-	private Collection<PURCHASE_ITEM> purchase_item;
+	private Collection<PurchaseItem> purchase_item;
 	@Column(name="purchase_no")
 	private String purchase_no;
 	@ManyToOne
 	@JoinColumn(name="client_id")
-	private USERS username;
+	private Users username;
 	@Column(name="client_address")
 	private String client_address;
 	@Column(name="client_phone")
 	private String client_phone;
 	@Column(name="status")
 	private String status;
-	public PURCHASE() {
+	public Purchase() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	
 
-	public PURCHASE(int id, Collection<PURCHASE_ITEM> purchase_item, String purchase_no, USERS username,
+	public Purchase(int id, Collection<PurchaseItem> purchase_item, String purchase_no, Users username,
 			String client_address, String client_phone, String status) {
 		super();
 		this.id = id;
@@ -53,10 +53,10 @@ public class PURCHASE {
 
 
 
-	public Collection<PURCHASE_ITEM> getPurchase_item() {
+	public Collection<PurchaseItem> getPurchase_item() {
 		return purchase_item;
 	}
-	public void setPurchase_item(Collection<PURCHASE_ITEM> purchase_item) {
+	public void setPurchase_item(Collection<PurchaseItem> purchase_item) {
 		this.purchase_item = purchase_item;
 	}
 	public int getId() {
@@ -71,10 +71,10 @@ public class PURCHASE {
 	public void setPurchase_no(String purchase_no) {
 		this.purchase_no = purchase_no;
 	}
-	public USERS getUsername() {
+	public Users getUsername() {
 		return username;
 	}
-	public void setUsername(USERS username) {
+	public void setUsername(Users username) {
 		this.username = username;
 	}
 	public String getClient_address() {

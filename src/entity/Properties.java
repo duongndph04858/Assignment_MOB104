@@ -10,14 +10,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="PROPERTIES")
-public class PROPERTIES {
+public class Properties {
 	@Id
 	@GeneratedValue
 	@Column(name="id")
 	private int id;
 	@ManyToOne
 	@JoinColumn(name="product_id")
-	private PRODUCT product_properties;
+	private Product product_properties;
 	@Column(name="monitor")
 	private String monitor;
 	@Column(name="os")
@@ -36,11 +36,11 @@ public class PROPERTIES {
 	private String sim;
 	@Column(name="pin")
 	private String pin;
-	public PROPERTIES() {
+	public Properties() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PROPERTIES(int id, PRODUCT product_properties, String monitor, String os, String camera, String front_camera,
+	public Properties(int id, Product product_properties, String monitor, String os, String camera, String front_camera,
 			String cpu, String ram, String rom, String sim, String pin) {
 		super();
 		this.id = id;
@@ -61,10 +61,10 @@ public class PROPERTIES {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public PRODUCT getProduct_properties() {
+	public Product getProduct_properties() {
 		return product_properties;
 	}
-	public void setProduct_properties(PRODUCT product_properties) {
+	public void setProduct_properties(Product product_properties) {
 		this.product_properties = product_properties;
 	}
 	public String getMonitor() {

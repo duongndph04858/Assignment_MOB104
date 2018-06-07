@@ -9,74 +9,74 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import entity.PRODUCT;
+import entity.Product;
 
 @Component
-public class PRODUCT_DAO {
+public class ProductDao {
 	
 	@Autowired
 	SessionFactory  factory;
 	
 	@Transactional
-	public List<PRODUCT> getAll() {
+	public List<Product> getAll() {
 		Session session = factory.getCurrentSession();
-		String hql = "from PRODUCT";
+		String hql = "from Product";
 		Query query = session.createQuery(hql);
-		List<PRODUCT> list_Allproduct = query.list();
+		List<Product> list_Allproduct = query.list();
 		return list_Allproduct;
 	}
 	
 	
 	@Transactional
-	public List<PRODUCT> getByProducer(String producer) {
+	public List<Product> getByProducer(String producer) {
 		Session session = factory.getCurrentSession();
-		String hql = "from PRODUCT where producer=:producer";
+		String hql = "from Product where producer=:producer";
 		Query query = session.createQuery(hql);
 		query.setParameter("producer", producer);
-		List<PRODUCT> list_product = query.list();
+		List<Product> list_product = query.list();
 		return list_product;
 	}
 	
 	@Transactional
-	public List<PRODUCT> getAllPerPage(int start) {
+	public List<Product> getAllPerPage(int start) {
 		Session session = factory.getCurrentSession();
-		String hql = "from PRODUCT";
+		String hql = "from Product";
 		Query query = session.createQuery(hql);
 		query.setFirstResult(start);
 		query.setMaxResults(9);
-		List<PRODUCT> list_product = query.list();
+		List<Product> list_product = query.list();
 		return list_product;
 	}
 	
 	@Transactional
-	public List<PRODUCT> getProducerPerPage(int start, String producer) {
+	public List<Product> getProducerPerPage(int start, String producer) {
 		Session session = factory.getCurrentSession();
-		String hql = "from PRODUCT where producer=:producer";
+		String hql = "from Product where producer=:producer";
 		Query query = session.createQuery(hql);
 		query.setParameter("producer", producer);
 		query.setFirstResult(start);
 		query.setMaxResults(9);
-		List<PRODUCT> list_product = query.list();
+		List<Product> list_product = query.list();
 		return list_product;
 	}
 	
 	@Transactional
-	public PRODUCT getProductByID(String id) {
+	public Product getProductByID(String id) {
 		Session session = factory.getCurrentSession();
-		String hql = "from PRODUCT where id=:id";
+		String hql = "from Product where id=:id";
 		Query query = session.createQuery(hql);
 		query.setParameter("id", id);
-		PRODUCT product = (PRODUCT) query.uniqueResult();
+		Product product = (Product) query.uniqueResult();
 		return product;
 	}
 	
 	@Transactional
-	public List<PRODUCT> getSearchByName(String textSearch){
+	public List<Product> getSearchByName(String textSearch){
 		Session session = factory.getCurrentSession();
-		String hql = "from PRODUCT where name like :textSearch or producer like :textSearch";
+		String hql = "from Product where name like :textSearch or producer like :textSearch";
 		Query query = session.createQuery(hql);
 		query.setParameter("textSearch", "%"+textSearch+"%");
-		List<PRODUCT> list_product = query.list();
+		List<Product> list_product = query.list();
 		return list_product;
 	}
 	

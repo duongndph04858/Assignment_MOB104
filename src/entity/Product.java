@@ -11,14 +11,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="PRODUCT")
-public class PRODUCT {
+public class Product {
 	@Id
 	@Column(name="id")
 	private String id;
-	@OneToMany(mappedBy="product_colors",fetch= FetchType.EAGER)
-	private List<PRODUCT_COLORS> product_colors = new ArrayList<>();
+	@OneToMany(mappedBy="product",fetch= FetchType.EAGER)
+	private List<ProductColors> product_colors = new ArrayList<>();
 	@OneToMany(mappedBy="product_properties",fetch= FetchType.EAGER)
-	private List<PROPERTIES> product_properties = new ArrayList<>();
+	private List<Properties> product_properties = new ArrayList<>();
 	@Column(name="name")
 	private String name;
 	@Column(name="price")
@@ -29,11 +29,11 @@ public class PRODUCT {
 	private int amount;
 	@Column(name="description")
 	private String description;
-	public PRODUCT() {
+	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PRODUCT(String id, String name, long price, String producer, int amount, String description) {
+	public Product(String id, String name, long price, String producer, int amount, String description) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -66,16 +66,16 @@ public class PRODUCT {
 	public void setProducer(String producer) {
 		this.producer = producer;
 	}
-	public List<PRODUCT_COLORS> getProduct_colors() {
+	public List<ProductColors> getProduct_colors() {
 		return product_colors;
 	}
-	public void setProduct_colors(List<PRODUCT_COLORS> product_colors) {
+	public void setProduct_colors(List<ProductColors> product_colors) {
 		this.product_colors = product_colors;
 	}
-	public List<PROPERTIES> getProduct_properties() {
+	public List<Properties> getProduct_properties() {
 		return product_properties;
 	}
-	public void setProduct_properties(List<PROPERTIES> product_properties) {
+	public void setProduct_properties(List<Properties> product_properties) {
 		this.product_properties = product_properties;
 	}
 	public int getAmount() {

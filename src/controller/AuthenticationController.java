@@ -8,18 +8,18 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import dao.USER_DAO;
-import entity.USERS;
+import dao.UsersDao;
+import entity.Users;
 
 @Controller
-public class Authentication_Controller {
+public class AuthenticationController {
 	@Autowired
-	USER_DAO user_dao;
+	UsersDao userDao;
 
 	@RequestMapping("login")
 	public String login(HttpSession session, @RequestParam("username") String username,
 			@RequestParam("password") String password, ModelMap md) {
-		USERS user = user_dao.getAccount(username);
+		Users user = userDao.getUSER(username);
 		if (user != null) {
 			if (user.getPassword().equals(password)) {
 				System.out.println(user.getFullname());
@@ -58,7 +58,7 @@ public class Authentication_Controller {
 			md.addAttribute("reg-error", "Vui lòng nhập đủ các trường!");
 		} else if (password.equals(repassword)) {
 			try {
-				user_dao.insertUser(new USERS(username, password, email));
+				userDao.insertUser(new Users(username, password, email));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

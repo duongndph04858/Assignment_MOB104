@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 import entity.Cart;
 
 @Component
-public class Cart_DAO extends HashMap<String, Cart> {
+public class CartDao extends HashMap<String, Cart> {
 
 	private static final long serialVersionUID = 1L;
-	 public Cart_DAO() {
+	 public CartDao() {
 		// TODO Auto-generated constructor stub
 	}
 	

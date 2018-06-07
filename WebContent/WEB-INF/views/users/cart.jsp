@@ -15,22 +15,7 @@
 <body>
 	<div class="container">
 		<jsp:include page="patterns/_head.jsp"></jsp:include>
-		<div class="row menu">
-			<ul class="nav nav-pills">
-				<li class="nav-item"><a class="nav-link" href="home.htm"> <i
-						class="fa fa-home"></i>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="oppo.htm">OPPO</a>
-				</li>
-				<li class="nav-item"><a class="nav-link " href="iphone.htm">IPHONE</a></li>
-				<li class="nav-item"><a class="nav-link" href="samsung.htm">SAMSUNG</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="sony.htm">SONY</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="xiaomi.htm">XIAOMI</a>
-				</li>
-			</ul>
-		</div>
+		<jsp:include page="patterns/_menu.jsp"></jsp:include>
 		<div class="row">
 			<div style="padding: 0; padding-right: 5px" class="col-6 banner">
 				<div id="banner1" class="carousel slide" data-ride="carousel">
@@ -101,6 +86,7 @@
 						<tr align="center">
 							<th scope="col">STT</th>
 							<th scope="col">Hình ảnh</th>
+							<th>Màu</th>
 							<th scope="col">Tên sản phẩm</th>
 							<th scope="col">Số lượng</th>
 							<th scope="col">Đơn giá</th>
@@ -109,39 +95,22 @@
 						</tr>
 					</thead>
 					<tbody align="center">
-						<c:forEach var="p" items="${shop }">
+						<c:forEach var="p" items="${shop}" varStatus="stt">
 							<tr>
 
-								<th scope="row">1</th>
+								<th scope="row">${stt.index }</th>
 								<td class="cart-img-product"><img
-									src="images/${p.value.product.product_colors.get(0).img_front }"
+									src="images/${p.value.product.product_colors.get(+"${color }"+).img_front }"
 									alt="" class="img-fluid"></td>
-								<td>${p.value.product.name }</td>
+								<td><%-- <i style="color: ${p.color}"
+									class="fa fa-circle product-color" aria-hidden="true"></i></td>
+								<td>${p.value.product.name } --%></td>
+								<td>${p.value.quantity }</td>
 								<td>100000000</td>
 								<td>100000000</td>
 								<td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
 							</tr>
 						</c:forEach>
-						<tr>
-							<th scope="row">1</th>
-							<td class="cart-img-product"><img src="images/sp1.png"
-								alt="" class="img-fluid"></td>
-							<td>something</td>
-							<td>1</td>
-							<td>100000000</td>
-							<td>100000000</td>
-							<td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-						</tr>
-						<tr>
-							<th scope="row">1</th>
-							<td class="cart-img-product"><img src="images/sp1.png"
-								alt="" class="img-fluid"></td>
-							<td>something</td>
-							<td>1</td>
-							<td style="display: table-cell; vertical-align: inherit">100000000</td>
-							<td>100000000</td>
-							<td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-						</tr>
 					</tbody>
 				</table>
 			</div>

@@ -16,12 +16,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="USERS")
-public class USERS {
+public class Users {
 	@Id
 	@Column(name="username")
 	private String username;
 	@OneToMany(mappedBy="username",fetch = FetchType.EAGER)
-	private Collection<PURCHASE> purchases;
+	private Collection<Purchase> purchases;
 	@Column(name="password")
 	private String password;
 	@Column(name="fullname")
@@ -38,13 +38,13 @@ public class USERS {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="dd/mm/yyyy")
 	private Date birthday;
-	public USERS() {
+	public Users() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-	public USERS(String username, String password, String fullname, boolean gender, String address, String email,
+	public Users(String username, String password, String fullname, boolean gender, String address, String email,
 			String phone, Date birthday) {
 		super();
 		this.username = username;
@@ -58,7 +58,7 @@ public class USERS {
 	}
 		
 
-	public USERS(String username, String password, String email) {
+	public Users(String username, String password, String email) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -76,10 +76,10 @@ public class USERS {
 	}
 
 
-	public Collection<PURCHASE> getPurchases() {
+	public Collection<Purchase> getPurchases() {
 		return purchases;
 	}
-	public void setPurchases(Collection<PURCHASE> purchases) {
+	public void setPurchases(Collection<Purchase> purchases) {
 		this.purchases = purchases;
 	}
 	public String getPassword() {

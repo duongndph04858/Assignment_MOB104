@@ -8,30 +8,30 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import entity.USERS;
+import entity.Users;
 
-@Component("user_dao")
-public class USER_DAO {
+@Component
+public class UsersDao {
 	@Autowired
 	@Qualifier("sessionFactory")
 	SessionFactory factory;
 
-	public USER_DAO() {
+	public UsersDao() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Transactional
-	public USERS getAccount(String username){
+	public Users getUSER(String username){
 		Session session = factory.getCurrentSession();
-		String hql = "from USERS where username =:username";
+		String hql = "from Users where username =:username";
 		Query query =  session.createQuery(hql);
 		query.setParameter("username", username);
-		USERS usr = (USERS) query.uniqueResult();
+		Users usr = (Users) query.uniqueResult();
 		return usr;
 	}
 	
-	public void insertUser(USERS user) {
+	public void insertUser(Users user) {
 		Session  session = factory.openSession();
 		Transaction tr = session.beginTransaction();
 		try {
