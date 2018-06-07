@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -108,16 +109,19 @@
 						</tr>
 					</thead>
 					<tbody align="center">
-						<tr>
-							<th scope="row">1</th>
-							<td class="cart-img-product"><img src="images/sp1.png"
-								alt="" class="img-fluid"></td>
-							<td>something</td>
-							<td>1</td>
-							<td>100000000</td>
-							<td>100000000</td>
-							<td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-						</tr>
+						<c:forEach var="p" items="${shop }">
+							<tr>
+
+								<th scope="row">1</th>
+								<td class="cart-img-product"><img
+									src="images/${p.value.product.product_colors.get(0).img_front }"
+									alt="" class="img-fluid"></td>
+								<td>${p.value.product.name }</td>
+								<td>100000000</td>
+								<td>100000000</td>
+								<td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+							</tr>
+						</c:forEach>
 						<tr>
 							<th scope="row">1</th>
 							<td class="cart-img-product"><img src="images/sp1.png"
@@ -179,6 +183,6 @@
 	<script src="js/jquery-3.2.1.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="js/validate.js"></script>	
+	<script src="js/validate.js"></script>
 </body>
 </html>
