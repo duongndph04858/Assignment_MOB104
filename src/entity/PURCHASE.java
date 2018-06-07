@@ -30,15 +30,17 @@ public class PURCHASE {
 	private String client_address;
 	@Column(name="client_phone")
 	private String client_phone;
+	@Column(name="status")
+	private String status;
 	public PURCHASE() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-	
+
 	public PURCHASE(int id, Collection<PURCHASE_ITEM> purchase_item, String purchase_no, USERS username,
-			String client_address, String client_phone) {
+			String client_address, String client_phone, String status) {
 		super();
 		this.id = id;
 		this.purchase_item = purchase_item;
@@ -46,7 +48,9 @@ public class PURCHASE {
 		this.username = username;
 		this.client_address = client_address;
 		this.client_phone = client_phone;
+		this.status = status;
 	}
+
 
 
 	public Collection<PURCHASE_ITEM> getPurchase_item() {
@@ -84,6 +88,18 @@ public class PURCHASE {
 	}
 	public void setClient_phone(String client_phone) {
 		this.client_phone = client_phone;
+	}
+
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

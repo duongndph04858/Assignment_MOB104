@@ -21,23 +21,7 @@
 
 	<div class="container">
 		<jsp:include page="patterns/_head.jsp"></jsp:include>
-		<div class="row menu">
-			<ul class="nav nav-pills">
-				<li class="nav-item"><a class="nav-link" href="home.htm"> <i
-						class="fa fa-home"></i>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="oppo.htm">OPPO</a>
-				</li>
-				<li class="nav-item"><a class="nav-link " href="iphone.htm">IPHONE</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="samsung.htm">SAMSUNG</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="sony.htm">SONY</a>
-				</li>
-				<li class="nav-item"><a class="nav-link active"
-					href="xiaomi.htm">XIAOMI</a></li>
-			</ul>
-		</div>
+		<jsp:include page="patterns/_menu.jsp"></jsp:include>
 		<div class="row banner">
 			<div id="carouselExampleIndicators" class="carousel slide"
 				data-ride="carousel">
@@ -76,7 +60,7 @@
 			<jsp:include page="patterns/_filter.jsp"></jsp:include>
 			<div class="col-9">
 				<div class="row product-list">
-					<c:forEach var="p" items="${lstXiaomi}" varStatus="status">
+					<c:forEach var="p" items="${lstProduct}" varStatus="status">
 						<div class="col-4">
 							<a class="product-infomation" href="product-info.htm?pId=${p.id}">
 								<div class="product-div">
@@ -145,6 +129,6 @@
 	<script
 		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
 		type="text/javascript"></script>
-	<script src="js/validate.js"></script>	
+	<script src="js/validate.js"></script>
 </body>
 </html>

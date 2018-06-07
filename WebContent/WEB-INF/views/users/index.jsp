@@ -23,23 +23,7 @@
 
 	<div class="container">
 		<jsp:include page="patterns/_head.jsp"></jsp:include>
-		<div class="row menu">
-			<ul class="nav nav-pills">
-				<li class="nav-item"><a class="nav-link active"
-					href="home.htm?start=0"> <i class="fa fa-home"></i>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="oppo.htm">OPPO</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="iphone.htm">IPHONE</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="samsung.htm">SAMSUNG</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="sony.htm">SONY</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="xiaomi.htm">XIAOMI</a>
-				</li>
-			</ul>
-		</div>
+		<jsp:include page="patterns/_menu.jsp"></jsp:include>
 		<div class="row banner">
 			<div id="carouselExampleIndicators" class="carousel slide"
 				data-ride="carousel">

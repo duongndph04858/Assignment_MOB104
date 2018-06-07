@@ -188,7 +188,7 @@
 						<ul class="nav nav-pills" role="tablist">
 							<c:forEach var="p" items="${product.product_colors }"
 								varStatus="stt">
-								<li class="nav-item pick-color"><a class="nav-link pcolor"
+								<li class="nav-item pick-color"><a class="nav-link pcolor ${((stt.index)==0)?'active':'' }"
 									data-toggle="pill" href="#${p.color }"><i
 										style="color: ${p.color}" class="fa fa-circle product-color"
 										aria-hidden="true"></i></a></li>
