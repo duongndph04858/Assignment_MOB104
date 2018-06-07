@@ -76,4 +76,11 @@ public class HomeController {
 	public String cart() {
 		return "users/cart";
 	}
+	
+	@RequestMapping("search")
+	public String searchTest(ModelMap md, @RequestParam String textSearch) {
+		List<PRODUCT> lstSearch = product_dao.getSearchByName(textSearch);
+		md.addAttribute("lstSearch", lstSearch);
+		return "users/search";
+	}
 }

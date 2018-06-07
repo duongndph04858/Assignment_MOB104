@@ -260,15 +260,17 @@
 			</a>
 		</div>
 		<div class="col-6 form-search">
-			<div class="input-group mb-3" style="margin-top: 25px">
-				<input type="text" class="form-control" placeholder="Search..."
-					aria-label="Recipient's username" aria-describedby="basic-addon2">
-				<div class="input-group-append">
-					<button class="btn btn-outline-secondary" type="button">
-						<i class="fa fa-search"></i>
-					</button>
+			<form action="search.htm">
+				<div class="input-group mb-3" style="margin-top: 25px">
+					<input type="text" class="form-control" placeholder="Search..."
+						aria-label="Recipient's username" aria-describedby="basic-addon2" name="textSearch">
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 		<div class="col hotline">Hotline: 1998 9794</div>
 		<div class="col cart">

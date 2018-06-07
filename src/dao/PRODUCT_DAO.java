@@ -70,4 +70,15 @@ public class PRODUCT_DAO {
 		return product;
 	}
 	
+	@Transactional
+	public List<PRODUCT> getSearchByName(String textSearch){
+		Session session = factory.getCurrentSession();
+		String hql = "from PRODUCT where name like :textSearch or producer like :textSearch";
+		Query query = session.createQuery(hql);
+		query.setParameter("textSearch", "%"+textSearch+"%");
+		List<PRODUCT> list_product = query.list();
+		return list_product;
+	}
+	
+	
 }
