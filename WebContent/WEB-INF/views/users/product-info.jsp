@@ -189,7 +189,7 @@
 							<c:forEach var="p" items="${product.product_colors }"
 								varStatus="stt">
 								<li class="nav-item pick-color"><a class="nav-link pcolor ${((stt.index)==0)?'active':'' }"
-									data-toggle="pill" href="#${p.color }"><i
+									data-toggle="pill" href="#${p.color }"><i 
 										style="color: ${p.color}" class="fa fa-circle product-color"
 										aria-hidden="true"></i></a></li>
 							</c:forEach>
@@ -198,7 +198,7 @@
 				</div>
 				<div class="row buy-product d-flex justify-content-center">
 					<div class="buy">
-					<a href="add-to-cart.htm?pID=${product.id }">Mua hàng</a>
+					<a href="add-to-cart.htm?pID=${product.id}">Mua hàng</a>
 					</div>		
 				</div>
 				<div class="row buy-product">

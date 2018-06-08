@@ -8,7 +8,7 @@ public class Cart implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String product_id;
-	private ProductColors product;
+	private Product product;
 	private int quantity ;
 	public Cart() {
 		super();
@@ -16,7 +16,7 @@ public class Cart implements Serializable {
 	}
 
 	
-	public Cart(String product_id, ProductColors product) {
+	public Cart(String product_id, Product product) {
 		super();
 		this.product_id = product_id;
 		this.product = product;
@@ -38,12 +38,12 @@ public class Cart implements Serializable {
 	}
 
 
-	public ProductColors getProduct() {
+	public Product getProduct() {
 		return product;
 	}
 
 
-	public void setProduct(ProductColors product) {
+	public void setProductColor(Product product) {
 		this.product = product;
 	}
 	

@@ -18,7 +18,7 @@ public class ProductColorDao {
 	@Transactional
 	public ProductColors getProductColor(String productId, String color) {
 		Session session = factory.openSession();
-		String hql = "from ProductColors where product =:productId and color =:color";
+		String hql = "from ProductColors where product_id =:productId and color =:color";
 		Query query = session.createQuery(hql);
 		query.setParameter("productId", productId);
 		query.setParameter("color",color);

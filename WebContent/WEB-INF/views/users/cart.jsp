@@ -100,11 +100,11 @@
 
 								<th scope="row">${stt.index }</th>
 								<td class="cart-img-product"><img
-									src="images/${p.value.product.product_colors.get(+"${color }"+).img_front }"
+									src="images/${p.value.product.product_colors.get(0).img_front}"
 									alt="" class="img-fluid"></td>
-								<td><%-- <i style="color: ${p.color}"
+								<td><i style="color: ${p.value.product.product_colors.get(0).color}"
 									class="fa fa-circle product-color" aria-hidden="true"></i></td>
-								<td>${p.value.product.name } --%></td>
+								<td>${p.value.product.name }</td>
 								<td>${p.value.quantity }</td>
 								<td>100000000</td>
 								<td>100000000</td>

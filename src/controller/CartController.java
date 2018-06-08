@@ -11,23 +11,25 @@ import dao.ProductColorDao;
 import dao.ProductDao;
 import entity.Cart;
 import entity.Product;
+import entity.ProductColors;
 
 @Controller
 public class CartController {
 	@Autowired
 	ProductDao productDao;
 	@Autowired
-	ProductColorDao pclD;
+	ProductColorDao productColorDao;
 
 	@RequestMapping("add-to-cart")
-	public String addToCart(HttpSession session, ModelMap md, @RequestParam String pID,HttpServletRequest request/*,
-			@RequestParam String color*/) {	
+	public String addToCart(HttpSession session, ModelMap md, @RequestParam String pID,HttpServletRequest request) {	
 		session = request.getSession(true);
 		CartDao shop=(CartDao) session.getAttribute("shop");
+//		ProductColors productColor = productColorDao.getProductColor(pID, color);
 		Product product = productDao.getProductByID(pID);
 		if (shop==null) {
 			shop = new CartDao();
 		} 		
+		shop.addToCart(new Cart(pID, product));
 		session.setAttribute("shop", shop);
 		return "users/cart";
 	}
