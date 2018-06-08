@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,19 +28,19 @@
 				</a></li>
 				<li class="nav-item"><a
 					class="nav-link ${(product.producer eq 'OPPO')?'active':'' }"
-					href="oppo.htm">OPPO</a></li>
+					href="oppo.htm?producer=OPPO">OPPO</a></li>
 				<li class="nav-item"><a
 					class="nav-link ${(product.producer eq 'Apple')?'active':'' }"
-					href="iphone.htm">IPHONE</a></li>
+					href="iphone.htm?producer=APPLE">IPHONE</a></li>
 				<li class="nav-item"><a
 					class="nav-link ${(product.producer eq 'Samsung')?'active':'' }"
-					href="samsung.htm">SAMSUNG</a></li>
+					href="samsung.htm?producer=SAMSUNG">SAMSUNG</a></li>
 				<li class="nav-item"><a
 					class="nav-link ${(product.producer eq 'Sony')?'active':'' }"
-					href="sony.htm">SONY</a></li>
+					href="sony.htm?producer=SONY">SONY</a></li>
 				<li class="nav-item"><a
 					class="nav-link ${(product.producer eq 'Xiaomi')?'active':'' }"
-					href="xiaomi.htm">Xiaomi</a></li>
+					href="xiaomi.htm?producer=XIAOMI">Xiaomi</a></li>
 			</ul>
 		</div>
 		<div class="row">
@@ -164,9 +164,9 @@
 			</div>
 			<div class="col-3">
 				<div style="padding-top: 5%" class="row buy-product">
-					<span class="prd-price">
-						<fmt:formatNumber value="${product.price}" pattern="###,###" type="number"/> đ
-					  </span>
+					<span class="prd-price"> <fmt:formatNumber
+							value="${product.price}" pattern="###,###" type="number" /> đ
+					</span>
 				</div>
 				<div class="row buy-product">
 					<div
@@ -188,8 +188,9 @@
 						<ul class="nav nav-pills" role="tablist">
 							<c:forEach var="p" items="${product.product_colors }"
 								varStatus="stt">
-								<li class="nav-item pick-color"><a class="nav-link pcolor ${((stt.index)==0)?'active':'' }"
-									data-toggle="pill" href="#${p.color }"><i 
+								<li class="nav-item pick-color"><a 
+									class="nav-link pcolor ${((stt.index)==0)?'active':'' }"
+									data-toggle="pill" href="#${p.color }"><i
 										style="color: ${p.color}" class="fa fa-circle product-color"
 										aria-hidden="true"></i></a></li>
 							</c:forEach>
@@ -198,8 +199,8 @@
 				</div>
 				<div class="row buy-product d-flex justify-content-center">
 					<div class="buy">
-					<a href="add-to-cart.htm?pID=${product.id}">Mua hàng</a>
-					</div>		
+						<a id="order" href="add-to-cart.htm?pID=${product.id}">Mua hàng</a>
+					</div>
 				</div>
 				<div class="row buy-product">
 					Gọi đặt mua ngay &nbsp; <span style="color: blue"> 1998 997
@@ -318,6 +319,18 @@
 	<script
 		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
 		type="text/javascript"></script>
-	<script src="js/validate.js"></script>	
+	<script src="js/validate.js"></script>
+	<script>
+			
+		$('#order').click(function(){
+			var hr = $(this).attr('href');
+			if($('.pcolor').hasClass('active')){
+				 var href=	$('.pick-color .active').attr('href');
+				 var color = href.substr(1);
+				 $(this).attr('href',hr+'&color='+color);
+			}
+		});
+		
+	</script>
 </body>
 </html>

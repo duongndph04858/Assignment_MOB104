@@ -1,7 +1,6 @@
 package dao;
 
 import java.util.HashMap;
-
 import org.springframework.stereotype.Component;
 
 import entity.Cart;
@@ -10,18 +9,30 @@ import entity.Cart;
 public class CartDao extends HashMap<String, Cart> {
 
 	private static final long serialVersionUID = 1L;
-	 public CartDao() {
+
+	public CartDao() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public void addToCart(Cart cart) {
-		if(this.containsKey(cart.getProduct_id())) {
-		int oldQuantity = ((Cart) this.get(cart.getProduct_id())).getQuantity();
-		((Cart) this.get(cart.getProduct_id())).setQuantity(oldQuantity+1);
-		
-		}else {
-			this.put(cart.getProduct_id(),cart);
+
+	public void addToCart(Cart cart, String color) {
+		if (this.containsKey(cart.getProduct_id()+color)) {
+			String productColor =((Cart)this.get(cart.getProduct_id()+color)).getColor();
+				if (color.equals(productColor)) {
+					int oldQuantity = ((Cart) this.get(cart.getProduct_id()+color)).getQuantity();
+					((Cart) this.get(cart.getProduct_id()+color)).setQuantity(oldQuantity + 1);
+				} else {
+					this.put(cart.getProduct_id()+color, cart);
+				}
+
+		} else {
+			this.put(cart.getProduct_id()+color, cart);
 		}
 	}
 	
+	public void removeToCart(String id,String color) {
+		if(this.containsKey(id+color)) {
+			this.remove(id+color);
+		}
+	}
+
 }

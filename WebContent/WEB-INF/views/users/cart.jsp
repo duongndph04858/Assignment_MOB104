@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -81,38 +82,52 @@
 				<a class="product-name">Giỏ hàng</a>
 			</div>
 			<div class="row th">
-				<table align="center" class="table table-striped">
-					<thead>
-						<tr align="center">
-							<th scope="col">STT</th>
-							<th scope="col">Hình ảnh</th>
-							<th>Màu</th>
-							<th scope="col">Tên sản phẩm</th>
-							<th scope="col">Số lượng</th>
-							<th scope="col">Đơn giá</th>
-							<th scope="col">Thành tiền</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody align="center">
-						<c:forEach var="p" items="${shop}" varStatus="stt">
-							<tr>
+				<c:choose>
+					<c:when test="${shop.size() ==0 }">
+					<div  style="width: 100%;text-align: center;">
+						<h2><a href="home.htm">Giỏ hàng trống, quay lại mua hàng</a></h2>
+					</div>
+					</c:when>
+					<c:otherwise>
+						<table align="center" class="table table-striped">
+							<thead>
+								<tr align="center">
+									<th scope="col">STT</th>
+									<th scope="col">Hình ảnh</th>
+									<th>Màu</th>
+									<th scope="col">Tên sản phẩm</th>
+									<th scope="col">Số lượng</th>
+									<th scope="col">Đơn giá</th>
+									<th scope="col">Thành tiền</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody align="center">
+								<c:forEach var="p" items="${shop}" varStatus="stt">
+									<tr>
 
-								<th scope="row">${stt.index }</th>
-								<td class="cart-img-product"><img
-									src="images/${p.value.product.product_colors.get(0).img_front}"
-									alt="" class="img-fluid"></td>
-								<td><i style="color: ${p.value.product.product_colors.get(0).color}"
-									class="fa fa-circle product-color" aria-hidden="true"></i></td>
-								<td>${p.value.product.name }</td>
-								<td>${p.value.quantity }</td>
-								<td>100000000</td>
-								<td>100000000</td>
-								<td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+										<th scope="row">${stt.index+1 }</th>
+										<td class="cart-img-product"><img
+											src="images/${p.value.productColor.img_front}" alt=""
+											class="img-fluid"></td>
+										<td><i style="color: ${p.value.productColor.color}"
+											class="fa fa-circle product-color" aria-hidden="true"></i></td>
+										<td>${p.value.productColor.product.name }</td>
+										<td>${p.value.quantity }</td>
+										<td><fmt:formatNumber type="number" pattern="###,###"
+												value="${p.value.productColor.product.price}" /> đ</td>
+										<td><fmt:formatNumber type="number" pattern="###,###"
+												value="${p.value.productColor.product.price*p.value.quantity}" />
+											đ</td>
+										<td><a
+											href="remove-to-cart.htm?pID=${p.value.product_id }&color=${p.value.productColor.color}"><i
+												class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		<div class="row page-navigation justify-content-center">
