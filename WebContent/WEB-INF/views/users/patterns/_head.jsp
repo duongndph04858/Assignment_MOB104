@@ -63,12 +63,12 @@
 					<div class="modal-body">
 						<div class="row" style="margin-top: 10px">
 							<div class="col-8" style="border-right: solid 1px #929090">
-								<form class="form-horizontal" action="login.htm">
+								<form id="form-login" class="form-horizontal" action="login.htm">
 									<div class="form-group row">
 										<label for="inputTenDangNhap" class="control-label col-3">Tên
 											đăng nhập:</label>
 										<div class="col-9">
-											<input name="username" type="text" class="form-control"
+											<input name="login-username" type="text" class="form-control"
 												id="inputTenDangNhap">
 										</div>
 									</div>
@@ -76,7 +76,7 @@
 										<label for="inputMatKhau" class="control-label col-3">Mật
 											khẩu:</label>
 										<div class="col-9">
-											<input name="password" type="password" class="form-control"
+											<input name="login-password" type="password" class="form-control"
 												id="inputMatKhau">
 										</div>
 									</div>
@@ -114,6 +114,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<!-- Đăng xuất -->
 		<div class="modal fade" id="modalDangxuat" tabindex="-1" role="dialog"
 			aria-labelledby="modalDangxuatLabel" aria-hidden="true">
@@ -165,6 +166,13 @@
 											<div class="col-9">
 												<input name="register-username" type="text"
 													class="form-control" id="inputTenDangNhapDK" required>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label for="inputHoVaTenDK" class="control-label col-3">Họ và tên:</label>
+											<div class="col-9">
+												<input name="register-fullname" type="text"
+													class="form-control" id="inputHoVaTenDK" required>
 											</div>
 										</div>
 										<div class="form-group row">
