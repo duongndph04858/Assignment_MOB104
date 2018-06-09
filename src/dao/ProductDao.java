@@ -80,5 +80,15 @@ public class ProductDao {
 		return list_product;
 	}
 	
-	
+	@Transactional
+	public List<Product> getFilterByPrice(String producer, long priceMin, long priceMax){
+		Session session = factory.getCurrentSession();
+		String hql = "from Product where producer=:producer and price >= :priceMin and price <= :priceMax";
+		Query query = session.createQuery(hql);
+		query.setParameter("producer", producer);
+		query.setParameter("priceMin", priceMin);
+		query.setParameter("priceMax", priceMax);
+		List<Product> list_product = query.list();
+		return list_product;
+	}
 }

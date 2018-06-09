@@ -21,46 +21,52 @@
 		</div>
 		<div class="row product-filter">
 			Chọn mức giá:
-			<form class="mt-2" action="">
+			<form class="mt-2" action="filter.htm">
 				<div class="form-check-inline">
 					<label class="form-check-label" for="radio1"> <input
-						type="radio" class="form-check-input" id="radio1" name="optradio"
-						value="option1" checked>Tất cả
+						type="radio" class="form-check-input" id="radio1" name="filterPrice"
+						value="all" checked>Tất cả
 					</label>
 				</div>
 				<br>
 				<div class="form-check-inline">
 					<label class="form-check-label" for="radio2"> <input
-						type="radio" class="form-check-input" id="radio2" name="optradio"
-						value="option2">Dưới 1.000.000 đ
+						type="radio" class="form-check-input" id="radio2" name="filterPrice"
+						value="op1" ${(filterPrice eq 'op1')?'checked':'' }>Dưới 1.000.000 đ
 					</label>
 				</div>
 				<br>
 				<div class="form-check-inline">
 					<label class="form-check-label" for="radio3"> <input
-						type="radio" class="form-check-input" id="radio3" name="optradio"
-						value="option3">Từ 1.000.000 đ đến 2.000.000 đ
+						type="radio" class="form-check-input" id="radio3" name="filterPrice"
+						value="op2" ${(filterPrice eq 'op2')?'checked':'' }>Từ 1.000.000 đ đến 2.000.000 đ
 					</label>
 				</div>
 				<br>
 				<div class="form-check-inline">
 					<label class="form-check-label" for="radio4"> <input
-						type="radio" class="form-check-input" id="radio4" name="optradio"
-						value="option4">Từ 2.000.000 đ đến 5.000.000 đ
+						type="radio" class="form-check-input" id="radio4" name="filterPrice"
+						value="op3" ${(filterPrice eq 'op3')?'checked':'' }>Từ 2.000.000 đ đến 5.000.000 đ
 					</label>
 				</div>
 				<br>
 				<div class="form-check-inline">
 					<label class="form-check-label" for="radio5"> <input
-						type="radio" class="form-check-input" id="radio5" name="optradio"
-						value="option5">Từ 5.000.000 đ đến 10.000.000 đ
+						type="radio" class="form-check-input" id="radio5" name="filterPrice"
+						value="op4" ${(filterPrice eq 'op4')?'checked':'' }>Từ 5.000.000 đ đến 10.000.000 đ
 					</label>
 				</div>
 				<br>
 				<div class="form-check-inline">
 					<label class="form-check-label" for="radio6"> <input
-						type="radio" class="form-check-input" id="radio6" name="optradio"
-						value="option6">Trên 10.000.000 đ
+						type="radio" class="form-check-input" id="radio6" name="filterPrice"
+						value="op5" ${(filterPrice eq 'op5')?'checked':'' }>Trên 10.000.000 đ
+					</label>
+				</div>
+				<div class="form-check-inline" style="display: none">
+					<label class="form-check-label" for="inputHidden"> <input
+						type="radio" class="form-check-input" id="inputHidden" name="inputHidden"
+						value="${producer}" checked="checked">
 					</label>
 				</div>
 			</form>
@@ -71,10 +77,6 @@
 	<script src="js/jquery-3.2.1.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		$('input[name="optradio"]').on('change', function() {
-			location.replace('home.htm?' + this.value);
-		});
-	</script>
+	
 </body>
 </html>

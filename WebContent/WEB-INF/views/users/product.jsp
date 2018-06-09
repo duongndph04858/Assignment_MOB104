@@ -130,5 +130,10 @@
 		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
 		type="text/javascript"></script>
 	<script src="js/validate.js"></script>
+	<script type="text/javascript">
+		$('input[name="filterPrice"]').on('change', function() {
+			$(this).closest("form").submit();
+		});
+	</script>
 </body>
 </html>

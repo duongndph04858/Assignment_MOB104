@@ -53,4 +53,37 @@ public class HomeController {
 		md.addAttribute("lstSearch", lstSearch);
 		return "users/search";
 	}
+	
+	@RequestMapping(value="filter")
+	public String filter(ModelMap md,@RequestParam String inputHidden ,@RequestParam String filterPrice) {
+		String producer = inputHidden;
+		if(filterPrice.equals("all")) {
+			List<Product> lstProduct = product_dao.getByProducer(inputHidden);
+			md.addAttribute("lstProduct", lstProduct);
+		} else {
+			long priceMin;
+			long priceMax;
+			if(filterPrice.equals("op1")) {
+				priceMin = 0;
+				priceMax = 1000000;
+			} else if(filterPrice.equals("op2")) {
+				priceMin = 1000000;
+				priceMax = 2000000;
+			} else if(filterPrice.equals("op3")) {
+				priceMin = 2000000;
+				priceMax = 5000000;
+			} else if(filterPrice.equals("op4")) {
+				priceMin = 5000000;
+				priceMax = 10000000;
+			} else {
+				priceMin = 10000000;
+				priceMax = 1000000000;
+			}
+			List<Product> lstProduct = product_dao.getFilterByPrice(inputHidden, priceMin, priceMax);
+			md.addAttribute("lstProduct", lstProduct);
+		}
+		md.addAttribute("filterPrice", filterPrice);
+		md.addAttribute("producer", producer);
+		return "users/product";
+	}
 }
