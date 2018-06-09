@@ -14,8 +14,8 @@
 				<div class="form-group">
 					<label for="sel">Sắp xếp theo:</label> <select class="form-control"
 						id="sel" name="sort" onchange="this.form.submit()">
-						<option value="1">Giá tăng dần</option>
-						<option value="2">Giá giảm dần</option>
+						<option value="1" ${(sort eq '1')?'selected':'' }>Giá tăng dần</option>
+						<option value="2" ${(sort eq '2')?'selected':'' }>Giá giảm dần</option>
 					</select>
 				</div>
 				<!-- </form> -->

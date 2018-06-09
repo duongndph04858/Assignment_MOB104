@@ -103,71 +103,62 @@ public class HomeController {
 			long priceMin;
 			long priceMax;
 			if(filterPrice.equals("op1")) {
+				priceMin = 0;
+				priceMax = 1000000;
 				if(sort.equals("2")) {
-					priceMin = 0;
-					priceMax = 1000000;
 					List<Product> lstProduct = product_dao.getFilterByPriceDesc(inputHidden, priceMin, priceMax);
 					md.addAttribute("lstProduct", lstProduct);
 				} else {
-					priceMin = 0;
-					priceMax = 1000000;
 					List<Product> lstProduct = product_dao.getFilterByPriceAsc(inputHidden, priceMin, priceMax);
 					md.addAttribute("lstProduct", lstProduct);
 				}
 			} else if(filterPrice.equals("op2")) {
+				priceMin = 1000000;
+				priceMax = 2000000;
 				if(sort.equals("2")) {
-					priceMin = 1000000;
-					priceMax = 2000000;
 					List<Product> lstProduct = product_dao.getFilterByPriceDesc(inputHidden, priceMin, priceMax);
 					md.addAttribute("lstProduct", lstProduct);
 				} else {
-					priceMin = 1000000;
-					priceMax = 2000000;
 					List<Product> lstProduct = product_dao.getFilterByPriceAsc(inputHidden, priceMin, priceMax);
 					md.addAttribute("lstProduct", lstProduct);
 				}
 				
 			} else if(filterPrice.equals("op3")) {
+				priceMin = 2000000;
+				priceMax = 5000000;
 				if(sort.equals("2")) {
-					priceMin = 2000000;
-					priceMax = 5000000;
 					List<Product> lstProduct = product_dao.getFilterByPriceDesc(inputHidden, priceMin, priceMax);
 					md.addAttribute("lstProduct", lstProduct);
 				} else {
-					priceMin = 2000000;
-					priceMax = 5000000;
 					List<Product> lstProduct = product_dao.getFilterByPriceAsc(inputHidden, priceMin, priceMax);
 					md.addAttribute("lstProduct", lstProduct);
 				}
 				
 			} else if(filterPrice.equals("op4")) {
+				priceMin = 5000000;
+				priceMax = 10000000;
 				if(sort.equals("2")) {
-					priceMin = 5000000;
-					priceMax = 10000000;
 					List<Product> lstProduct = product_dao.getFilterByPriceDesc(inputHidden, priceMin, priceMax);
 					md.addAttribute("lstProduct", lstProduct);
 				} else {
-					priceMin = 5000000;
-					priceMax = 10000000;
 					List<Product> lstProduct = product_dao.getFilterByPriceAsc(inputHidden, priceMin, priceMax);
 					md.addAttribute("lstProduct", lstProduct);
 				}
 				
 			} else {
+				priceMin = 10000000;
+				priceMax = 1000000000;
 				if(sort.equals("2")) {
-					priceMin = 10000000;
-					priceMax = 1000000000;
 					List<Product> lstProduct = product_dao.getFilterByPriceDesc(inputHidden, priceMin, priceMax);
 					md.addAttribute("lstProduct", lstProduct);
 				} else {
-					priceMin = 10000000;
-					priceMax = 1000000000;
 					List<Product> lstProduct = product_dao.getFilterByPriceAsc(inputHidden, priceMin, priceMax);
 					md.addAttribute("lstProduct", lstProduct);
 				}
 			}
 		}
 		md.addAttribute("filterPrice", filterPrice);
+		md.addAttribute("sort", sort);
 		md.addAttribute("producer", producer);
 		return "users/product";
 	}
