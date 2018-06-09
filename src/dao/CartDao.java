@@ -7,7 +7,6 @@ import entity.Cart;
 
 @Component
 public class CartDao extends HashMap<String, Cart> {
-
 	private static final long serialVersionUID = 1L;
 
 	public CartDao() {
@@ -34,5 +33,12 @@ public class CartDao extends HashMap<String, Cart> {
 			this.remove(id+color);
 		}
 	}
-
+	
+	public long getTotalPrice() {
+		long totalPrice=0;
+		for(String product: this.keySet()) {
+			totalPrice+= this.get(product).getProductColor().getProduct().getPrice() * this.get(product).getQuantity();
+		}
+		return totalPrice;
+	}
 }

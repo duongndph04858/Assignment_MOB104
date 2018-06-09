@@ -3,9 +3,7 @@ package entity;
 import java.io.Serializable;
 
 public class Cart implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private String product_id;
 	private ProductColors productColor;
@@ -46,6 +44,5 @@ public class Cart implements Serializable {
 	public void setColor(String color) {
 		this.color = color;
 	}
-
 	
 }

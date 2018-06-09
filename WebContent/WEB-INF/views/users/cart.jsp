@@ -126,6 +126,7 @@
 								</c:forEach>
 							</tbody>
 						</table>
+						<h2>${total}</h2>
 					</c:otherwise>
 				</c:choose>
 			</div>

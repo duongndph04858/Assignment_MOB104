@@ -33,6 +33,8 @@ public class CartController {
 		}
 		cartDao.addToCart(new Cart(pID, productColor,color),color);
 		session.setAttribute("shop", cartDao);
+		System.out.println(cartDao.getTotalPrice());
+		session.setAttribute("total", cartDao.getTotalPrice());
 		return "users/cart";
 		
 	}
