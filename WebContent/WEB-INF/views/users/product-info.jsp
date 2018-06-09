@@ -28,19 +28,19 @@
 				</a></li>
 				<li class="nav-item"><a
 					class="nav-link ${(product.producer eq 'OPPO')?'active':'' }"
-					href="oppo.htm?producer=OPPO">OPPO</a></li>
+					href="product.htm?producer=OPPO">OPPO</a></li>
 				<li class="nav-item"><a
 					class="nav-link ${(product.producer eq 'Apple')?'active':'' }"
-					href="iphone.htm?producer=APPLE">IPHONE</a></li>
+					href="product.htm?producer=APPLE">IPHONE</a></li>
 				<li class="nav-item"><a
 					class="nav-link ${(product.producer eq 'Samsung')?'active':'' }"
-					href="samsung.htm?producer=SAMSUNG">SAMSUNG</a></li>
+					href="product.htm?producer=SAMSUNG">SAMSUNG</a></li>
 				<li class="nav-item"><a
 					class="nav-link ${(product.producer eq 'Sony')?'active':'' }"
-					href="sony.htm?producer=SONY">SONY</a></li>
+					href="product.htm?producer=SONY">SONY</a></li>
 				<li class="nav-item"><a
 					class="nav-link ${(product.producer eq 'Xiaomi')?'active':'' }"
-					href="xiaomi.htm?producer=XIAOMI">Xiaomi</a></li>
+					href="v.htm?producer=XIAOMI">Xiaomi</a></li>
 			</ul>
 		</div>
 		<div class="row">
