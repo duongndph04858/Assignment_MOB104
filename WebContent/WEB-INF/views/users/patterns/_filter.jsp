@@ -12,9 +12,9 @@
 			<form action="sort-by-price.htm">
 				<div class="form-group">
 					<label for="sel">Sắp xếp theo:</label> <select class="form-control"
-						id="sel" name="sellist">
-						<option>Giá tăng dần</option>
-						<option>Giá giảm dần</option>
+						id="sel" name="sort"><!--  onchange="this.form.submit()"> -->
+						<option value="1">Giá tăng dần</option>
+						<option value="2">Giá giảm dần</option>
 					</select>
 				</div>
 			</form>

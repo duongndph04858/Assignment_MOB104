@@ -58,11 +58,12 @@ public class Users {
 	}
 		
 
-	public Users(String username, String password, String email) {
+	public Users(String username, String fullname, String password, String email) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.fullname = fullname;
 	}
 
 

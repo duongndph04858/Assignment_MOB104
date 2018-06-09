@@ -17,23 +17,24 @@ public class AuthenticationController {
 	UsersDao userDao;
 
 	@RequestMapping("login")
-	public String login(HttpSession session, @RequestParam("username") String username,
-			@RequestParam("password") String password, ModelMap md) {
+	public String login(HttpSession session, @RequestParam("login-username") String username,
+			@RequestParam("login-password") String password, ModelMap md) {
 		Users user = userDao.getUSER(username);
+		
 		if (user != null) {
 			if (user.getPassword().equals(password)) {
 				System.out.println(user.getFullname());
 				session.setAttribute("user", user.getFullname());
 
 			} else {
-				md.addAttribute("login-error", "Mật khẩu bạn nhập không chính xác!");
+				md.addAttribute("login_error", "Mật khẩu bạn nhập không chính xác!");
 			}
 		} else {
-			md.addAttribute("login-error", "Tài khoản không tồn tại!");
+			md.addAttribute("login_error", "Tài khoản không tồn tại!");
 
 		}
 		return "redirect:/home.htm";
-
+		
 	}
 
 	@RequestMapping(value = "logout", params = "yes")
@@ -51,6 +52,7 @@ public class AuthenticationController {
 	@RequestMapping("register")
 	public String register(HttpServletRequest request,
 			@RequestParam(value = "register-username", required = true, defaultValue = "") String username,
+			@RequestParam(value = "register-fullname", required = true, defaultValue = "") String fullname,
 			@RequestParam(value = "register-password", required = true, defaultValue = "") String password,
 			@RequestParam(value = "register-repassword", required = true, defaultValue = "") String repassword,
 			@RequestParam(value = "register-email", required = true, defaultValue = "") String email, ModelMap md) {
@@ -58,7 +60,7 @@ public class AuthenticationController {
 			md.addAttribute("reg-error", "Vui lòng nhập đủ các trường!");
 		} else if (password.equals(repassword)) {
 			try {
-				userDao.insertUser(new Users(username, password, email));
+				userDao.insertUser(new Users(username, fullname, password, email));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

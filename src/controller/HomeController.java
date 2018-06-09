@@ -86,4 +86,44 @@ public class HomeController {
 		md.addAttribute("producer", producer);
 		return "users/product";
 	}
+	
+	// sort by price test
+	/*@RequestMapping("sort-by-price")
+	public String sort(ModelMap md, @RequestParam String inputHidden, @RequestParam String filterPrice, @RequestParam String sort) {
+		String producer = inputHidden;
+		String sortPrice;
+		if(sort.equals("2")) {
+			sortPrice = "desc";
+		} else {
+			sortPrice = "asc";
+		}
+		if(filterPrice.equals("all")) {
+			List<Product> lstProduct = product_dao.getByProducer(inputHidden, sortPrice);
+			md.addAttribute("lstProduct", lstProduct);
+		} else {
+			long priceMin;
+			long priceMax;
+			if(filterPrice.equals("op1")) {
+				priceMin = 0;
+				priceMax = 1000000;
+			} else if(filterPrice.equals("op2")) {
+				priceMin = 1000000;
+				priceMax = 2000000;
+			} else if(filterPrice.equals("op3")) {
+				priceMin = 2000000;
+				priceMax = 5000000;
+			} else if(filterPrice.equals("op4")) {
+				priceMin = 5000000;
+				priceMax = 10000000;
+			} else {
+				priceMin = 10000000;
+				priceMax = 1000000000;
+			}
+			List<Product> lstProduct = product_dao.getFilterByPrice(inputHidden, priceMin, priceMax, sortPrice);
+			md.addAttribute("lstProduct", lstProduct);
+		}
+		md.addAttribute("filterPrice", filterPrice);
+		md.addAttribute("producer", producer);
+		return "users/product";
+	}*/
 }
