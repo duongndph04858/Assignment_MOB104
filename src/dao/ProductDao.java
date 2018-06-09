@@ -27,9 +27,19 @@ public class ProductDao {
 	}
 
 	@Transactional
-	public List<Product> getByProducer(String producer) {
+	public List<Product> getByProducerAsc(String producer) {
 		Session session = factory.getCurrentSession();
-		String hql = "from Product where producer=:producer";
+		String hql = "from Product where producer=:producer order by price asc";
+		Query query = session.createQuery(hql);
+		query.setParameter("producer", producer);
+		List<Product> list_product = query.list();
+		return list_product;
+	}
+	
+	@Transactional
+	public List<Product> getByProducerDesc(String producer) {
+		Session session = factory.getCurrentSession();
+		String hql = "from Product where producer=:producer order by price desc";
 		Query query = session.createQuery(hql);
 		query.setParameter("producer", producer);
 		List<Product> list_product = query.list();
@@ -80,9 +90,21 @@ public class ProductDao {
 	}
 
 	@Transactional
-	public List<Product> getFilterByPrice(String producer, long priceMin, long priceMax) {
+	public List<Product> getFilterByPriceAsc(String producer, long priceMin, long priceMax) {
 		Session session = factory.getCurrentSession();
-		String hql = "from Product where producer=:producer and price >= :priceMin and price <= :priceMax";
+		String hql = "from Product where producer=:producer and price >= :priceMin and price <= :priceMax order by price asc";
+		Query query = session.createQuery(hql);
+		query.setParameter("producer", producer);
+		query.setParameter("priceMin", priceMin);
+		query.setParameter("priceMax", priceMax);
+		List<Product> list_product = query.list();
+		return list_product;
+	}
+	
+	@Transactional
+	public List<Product> getFilterByPriceDesc(String producer, long priceMin, long priceMax) {
+		Session session = factory.getCurrentSession();
+		String hql = "from Product where producer=:producer and price >= :priceMin and price <= :priceMax order by price desc";
 		Query query = session.createQuery(hql);
 		query.setParameter("producer", producer);
 		query.setParameter("priceMin", priceMin);
