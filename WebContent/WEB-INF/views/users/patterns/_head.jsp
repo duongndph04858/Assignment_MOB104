@@ -31,17 +31,26 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<ul style="z-index: 1;">
-					<li style="list-style: none" id="user"><a>&nbsp; Xin chào,
-							${user }</a>
+				<ul style="z-index: 1; padding-left: 10px;">
+
+					<li style="list-style: none; float: left;" id="user"><a>&nbsp;
+							Xin chào, ${user.fullname }</a>
 						<ul class="user-action">
 							<li style="list-style: none"><a class="action-item"><i
 									style="font-size: 20px" class="fa fa-address-card-o"
 									aria-hidden="true"></i> &nbsp; Thông tin cá nhân&nbsp;&nbsp;</a></li>
+
+							<c:if test="${isAdmin != null }">
+								<li style="list-style: none"><a class="action-item"
+									href="admin/dashboard/order-management.htm"><i style="font-size: 20px;"
+										class="fa fa-bars" aria-hidden="true"></i> &nbsp;&nbsp;
+										${isAdmin}</a></li>
+							</c:if>
 							<li style="list-style: none"><a class="action-item"
 								data-toggle="modal" data-target="#modalDangxuat"><i
 									style="font-size: 20px" class="fa fa-sign-out"
 									aria-hidden="true"></i> &nbsp; &nbsp;Đăng xuất</a></li>
+
 						</ul></li>
 				</ul>
 			</c:otherwise>
@@ -76,8 +85,8 @@
 										<label for="inputMatKhau" class="control-label col-3">Mật
 											khẩu:</label>
 										<div class="col-9">
-											<input name="login-password" type="password" class="form-control"
-												id="inputMatKhau">
+											<input name="login-password" type="password"
+												class="form-control" id="inputMatKhau">
 										</div>
 									</div>
 									<div class="form-group row">
@@ -114,7 +123,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Đăng xuất -->
 		<div class="modal fade" id="modalDangxuat" tabindex="-1" role="dialog"
 			aria-labelledby="modalDangxuatLabel" aria-hidden="true">
@@ -169,7 +178,8 @@
 											</div>
 										</div>
 										<div class="form-group row">
-											<label for="inputHoVaTenDK" class="control-label col-3">Họ và tên:</label>
+											<label for="inputHoVaTenDK" class="control-label col-3">Họ
+												và tên:</label>
 											<div class="col-9">
 												<input name="register-fullname" type="text"
 													class="form-control" id="inputHoVaTenDK" required>
@@ -264,14 +274,15 @@
 	</div>
 	<div class="row header">
 		<div class="col-2 logo">
-			<a href="index.html"> <img src="images/logo.png" alt="">
+			<a href="home.htm"> <img src="images/logo.png" alt="">
 			</a>
 		</div>
 		<div class="col-6 form-search">
 			<form action="search.htm">
 				<div class="input-group mb-3" style="margin-top: 25px">
 					<input type="text" class="form-control" placeholder="Search..."
-						aria-label="Recipient's username" aria-describedby="basic-addon2" name="textSearch">
+						aria-label="Recipient's username" aria-describedby="basic-addon2"
+						name="textSearch">
 					<div class="input-group-append">
 						<button class="btn btn-outline-secondary" type="submit">
 							<i class="fa fa-search"></i>

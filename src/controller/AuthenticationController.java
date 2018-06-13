@@ -20,11 +20,11 @@ public class AuthenticationController {
 	public String login(HttpSession session, @RequestParam("login-username") String username,
 			@RequestParam("login-password") String password, ModelMap md) {
 		Users user = userDao.getUSER(username);
-		
+
 		if (user != null) {
 			if (user.getPassword().equals(password)) {
 				System.out.println(user.getFullname());
-				session.setAttribute("user", user.getFullname());
+				session.setAttribute("user", user);
 
 			} else {
 				md.addAttribute("login_error", "Mật khẩu bạn nhập không chính xác!");
@@ -34,7 +34,7 @@ public class AuthenticationController {
 
 		}
 		return "redirect:/home.htm";
-		
+
 	}
 
 	@RequestMapping(value = "logout", params = "yes")
@@ -70,4 +70,8 @@ public class AuthenticationController {
 		return "redirect:/home.htm";
 	}
 
+	@RequestMapping("403")
+	public String notPermission() {
+		return "users/403";
+	}
 }

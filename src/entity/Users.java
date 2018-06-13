@@ -38,16 +38,19 @@ public class Users {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="dd/mm/yyyy")
 	private Date birthday;
+	@Column(name="position")
+	private String position;
 	public Users() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	public Users(String username, String password, String fullname, boolean gender, String address, String email,
-			String phone, Date birthday) {
+
+
+	public Users(String username, Collection<Purchase> purchases, String password, String fullname, boolean gender,
+			String address, String email, String phone, Date birthday, String position) {
 		super();
 		this.username = username;
+		this.purchases = purchases;
 		this.password = password;
 		this.fullname = fullname;
 		this.gender = gender;
@@ -55,8 +58,9 @@ public class Users {
 		this.email = email;
 		this.phone = phone;
 		this.birthday = birthday;
+		this.position = position;
 	}
-		
+
 
 	public Users(String username, String fullname, String password, String email) {
 		super();
@@ -124,6 +128,16 @@ public class Users {
 	}
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+
+
+	public String getPosition() {
+		return position;
+	}
+
+
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	
 	
