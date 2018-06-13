@@ -37,15 +37,10 @@ public class AuthenticationController {
 
 	}
 
-	@RequestMapping(value = "logout", params = "yes")
+	@RequestMapping("logout")
 	public String logout(HttpSession session, HttpServletRequest request) {
 		session = request.getSession();
 		session.invalidate();
-		return "redirect:/home.htm";
-	}
-
-	@RequestMapping(value = "logout", params = "no")
-	public String dont_logout() {
 		return "redirect:/home.htm";
 	}
 

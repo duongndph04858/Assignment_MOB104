@@ -112,6 +112,8 @@ public class ProductDao {
 		List<Product> list_product = query.list();
 		return list_product;
 	}
+	
+	
 
 	// test sort
 	/*@Transactional

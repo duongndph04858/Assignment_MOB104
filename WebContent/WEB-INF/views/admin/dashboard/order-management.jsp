@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,15 +27,17 @@
 			<div class="col-2">
 				<div class="row"
 					style="margin-left: 40px; margin-top: 5px; margin-bottom: 5px;">
-					<a href="home.htm">
-					<img src="images/logo.png" alt="">
+					<a href="home.htm"> <img src="images/logo.png" alt="">
 					</a>
 				</div>
 				<div class="row" style="width: 100%">
 					<div class="nav flex-column nav-pills" style="width: 100%">
-						<a class="nav-link" href="admin/dashboard/product-management.htm">Quản lý sản
-							phẩm</a> <a class="nav-link active" href="admin/dashboard/order-management.htm">Quản
-							lý đơn hàng</a>
+						<a class="nav-link" href="admin/dashboard/product-management.htm">Quản
+							lý sản phẩm</a> <a class="nav-link active"
+							href="admin/dashboard/order-management.htm">Quản lý đơn hàng</a>
+						<a data-toggle="modal" data-target="#logoutModal" class="nav-link"
+							href=""><i class="fa fa-power-off" aria-hidden="true"></i>
+							Đăng xuất</a>
 					</div>
 				</div>
 			</div>
@@ -68,231 +71,49 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-purchaseid">1</td>
-								<td class="table-customername">Nguyễn Đại Dương</td>
-								<td class="table-address">Nguyễn Đổng Chi</td>
-								<td class="table-phone">0987654321</td>
-								<td class="table-status">Đang vận chuyển</td>
-								<td class="table-purchasedetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a></td>
-							</tr>
+							<c:forEach var="purchase" items="${orderList }">
+								<tr>
+									<td class="table-purchaseid">${purchase.purchase_no }</td>
+									<td class="table-customername">${purchase.username.fullname }</td>
+									<td class="table-address">${purchase.client_address }</td>
+									<td class="table-phone">${purchase.client_phone }</td>
+									<td class="table-status">${purchase.status }</td>
+									<td class="table-purchasedetail"><a href="#"> <i
+											class="fa fa-pencil-square" aria-hidden="true"
+											style="font-size: 25px"></i>
+									</a></td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Đăng xuất</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">Bạn thực sự muốn đăng xuất?</div>
+					<div class="modal-footer">
+						<form action="logout.htm" method="post">
+							<button type="submit" class="btn btn-danger">Đồng ý</button>
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal">Hủy bỏ</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

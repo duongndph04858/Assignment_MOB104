@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,15 +32,19 @@
 				</div>
 				<div class="row" style="width: 100%">
 					<div class="nav flex-column nav-pills" style="width: 100%">
-						<a class="nav-link" href="admin/dashboard/product-management.htm">Quản
-							lý sản phẩm</a> <a class="nav-link active"
+						<a class="nav-link active"
+							href="admin/dashboard/product-management.htm">Quản lý sản
+							phẩm</a> <a class="nav-link "
 							href="admin/dashboard/order-management.htm">Quản lý đơn hàng</a>
+						<a data-toggle="modal" data-target="#logoutModal" class="nav-link"
+							href=""><i class="fa fa-power-off" aria-hidden="true"></i>
+							Đăng xuất</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-10">
-				<div  class="row d-flex justify-content-center" style="font-size: 50px;">
-					Quản lý sản phẩm</div>
+				<div class="row d-flex justify-content-center"
+					style="font-size: 50px;">Quản lý sản phẩm</div>
 				<div class="row">
 					<div class="col-4 form-search">
 						<div class="input-group mb-3" style="margin-top: 25px">
@@ -81,252 +87,90 @@
 							<tr>
 								<th class="table-productid">Mã sản phẩm</th>
 								<th class="table-productname">Tên sản phẩm</th>
+								<th class="table-productcolor">Màu</th>
 								<th class="table-productprice">Giá</th>
 								<th class="table-productbrand">Hãng sản xuất</th>
 								<th class="table-productamount">Số lượng</th>
 								<th class="table-productdetail">Chỉnh sửa</th>
 							</tr>
 						</thead>
-						<tbody style="height: 705px;">
-							<tr>
-								<td class="table-productid">1</td>
-								<td class="table-productname">iPhoneX</td>
-								<td class="table-productprice">29.000.000</td>
-								<td class="table-productbrand">Apple</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">2</td>
-								<td class="table-productname">Xiaomi Redmi Note3 Pro</td>
-								<td class="table-productprice">4.000.000</td>
-								<td class="table-productbrand">Xiaomi</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">1</td>
-								<td class="table-productname">iPhoneX</td>
-								<td class="table-productprice">29.000.000</td>
-								<td class="table-productbrand">Apple</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">2</td>
-								<td class="table-productname">Xiaomi Redmi Note3 Pro</td>
-								<td class="table-productprice">4.000.000</td>
-								<td class="table-productbrand">Xiaomi</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">1</td>
-								<td class="table-productname">iPhoneX</td>
-								<td class="table-productprice">29.000.000</td>
-								<td class="table-productbrand">Apple</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">2</td>
-								<td class="table-productname">Xiaomi Redmi Note3 Pro</td>
-								<td class="table-productprice">4.000.000</td>
-								<td class="table-productbrand">Xiaomi</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">1</td>
-								<td class="table-productname">iPhoneX</td>
-								<td class="table-productprice">29.000.000</td>
-								<td class="table-productbrand">Apple</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">2</td>
-								<td class="table-productname">Xiaomi Redmi Note3 Pro</td>
-								<td class="table-productprice">4.000.000</td>
-								<td class="table-productbrand">Xiaomi</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">1</td>
-								<td class="table-productname">iPhoneX</td>
-								<td class="table-productprice">29.000.000</td>
-								<td class="table-productbrand">Apple</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">2</td>
-								<td class="table-productname">Xiaomi Redmi Note3 Pro</td>
-								<td class="table-productprice">4.000.000</td>
-								<td class="table-productbrand">Xiaomi</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">1</td>
-								<td class="table-productname">iPhoneX</td>
-								<td class="table-productprice">29.000.000</td>
-								<td class="table-productbrand">Apple</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">2</td>
-								<td class="table-productname">Xiaomi Redmi Note3 Pro</td>
-								<td class="table-productprice">4.000.000</td>
-								<td class="table-productbrand">Xiaomi</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">1</td>
-								<td class="table-productname">iPhoneX</td>
-								<td class="table-productprice">29.000.000</td>
-								<td class="table-productbrand">Apple</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">2</td>
-								<td class="table-productname">Xiaomi Redmi Note3 Pro</td>
-								<td class="table-productprice">4.000.000</td>
-								<td class="table-productbrand">Xiaomi</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">1</td>
-								<td class="table-productname">iPhoneX</td>
-								<td class="table-productprice">29.000.000</td>
-								<td class="table-productbrand">Apple</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">2</td>
-								<td class="table-productname">Xiaomi Redmi Note3 Pro</td>
-								<td class="table-productprice">4.000.000</td>
-								<td class="table-productbrand">Xiaomi</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">1</td>
-								<td class="table-productname">iPhoneX</td>
-								<td class="table-productprice">29.000.000</td>
-								<td class="table-productbrand">Apple</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
-							<tr>
-								<td class="table-productid">2</td>
-								<td class="table-productname">Xiaomi Redmi Note3 Pro</td>
-								<td class="table-productprice">4.000.000</td>
-								<td class="table-productbrand">Xiaomi</td>
-								<td class="table-productamount">9</td>
-								<td class="table-productdetail"><a href="#"> <i
-										class="fa fa-pencil-square" aria-hidden="true"
-										style="font-size: 25px"></i>
-								</a> <a href="#" style="margin-left: 20px"> <i
-										class="fa fa-trash" aria-hidden="true" style="font-size: 25px"></i>
-								</a></td>
-							</tr>
+						<tbody>
+							<c:forEach var="productColor" items="${productList }">
+								<tr>
+									<td class="table-productid">${productColor.product.id }</td>
+									<td class="table-productname">${productColor.product.name }</td>
+									<td class="table-productcolor">${productColor.color }</td>
+									<td class="table-productprice"><fmt:formatNumber
+											type="number" pattern="###,###"
+											value="${productColor.product.price }" /> đ</td>
+									<td class="table-productbrand">${productColor.product.producer }</td>
+									<td class="table-productamount">${productColor.product.amount }</td>
+									<td class="table-productdetail"><a href="#"> <i
+											class="fa fa-pencil-square" aria-hidden="true"
+											style="font-size: 25px"></i>
+									</a> <a data-toggle="modal" data-target="#deleteModal" href=""
+										title="${productColor.product.name }"
+										data-color="${productColor.color }" style="margin-left: 20px"
+										class="deleteProduct"> <i class="fa fa-trash" aria-hidden="true"
+											style="font-size: 25px"></i>
+									</a></td>
+								</tr>
+							</c:forEach>
+
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Đăng xuất</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">Bạn thực sự muốn đăng xuất?</div>
+					<div class="modal-footer">
+						<form action="logout.htm" method="post">
+							<button type="submit" class="btn btn-danger">Đồng ý</button>
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal">Hủy bỏ</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--Delete Modal -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Xóa sản phẩm</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div id="deleteProductModal" class="modal-body"></div>
+					<div class="modal-footer">
+						<form action="logout.htm" method="post">
+							<button type="submit" class="btn btn-danger">Đồng ý</button>
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal">Hủy bỏ</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -341,5 +185,12 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$('.deleteProduct').click(function(){
+			var title = $(this).attr('title');
+			var data = $(this).data('color');
+			$('#deleteProductModal').text("Bạn thực sự muốn xóa sản phẩm "+title+" "+data+"?");
+		});
+	</script>
 </body>
 </html>

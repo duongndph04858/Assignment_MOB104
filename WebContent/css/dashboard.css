@@ -52,16 +52,15 @@ th{
 }
 
 .table-productid{
-    text-align: center;
-    width: 11.5%;
+    width: 14.5%;
 }
 
 .table-productname{
-    width: 30%;
+    width: 27%;
 }
 
 .table-productprice{
-    width: 15.8%;
+    width: 12.8%;
 }
 
 .table-productbrand{
@@ -72,8 +71,12 @@ th{
 	text-align:center;
     width: 9.5%;
 }
+.table-productcolor{
+    text-align: center;
+    width: 8%;
+}
 
 .table-productdetail{
     text-align: center;
-    width: 19%;
+    width: 15%;
 }

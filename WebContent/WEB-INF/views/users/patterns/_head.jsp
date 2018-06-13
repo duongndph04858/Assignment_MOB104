@@ -42,7 +42,7 @@
 
 							<c:if test="${isAdmin != null }">
 								<li style="list-style: none"><a class="action-item"
-									href="admin/dashboard/order-management.htm"><i style="font-size: 20px;"
+									href="admin/dashboard/product-management.htm"><i style="font-size: 20px;"
 										class="fa fa-bars" aria-hidden="true"></i> &nbsp;&nbsp;
 										${isAdmin}</a></li>
 							</c:if>
@@ -141,8 +141,8 @@
 					</div>
 					<div class="modal-footer">
 						<form action="logout.htm" method="post">
-							<button name="yes" class="btn btn-danger">Đăng xuất</button>
-							<button name="no" class="btn btn-primary">Hủy bỏ</button>
+							<button type="submit" class="btn btn-danger">Đồng ý</button>
+							<button data-dismiss="modal" class="btn btn-primary">Hủy bỏ</button>
 						</form>
 					</div>
 				</div>
@@ -303,6 +303,5 @@
 	<script src="js/jquery-3.2.1.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-
 </body>
 </html>
