@@ -25,8 +25,8 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-2">
-				<div class="row"
-					style="margin-left: 40px; margin-top: 5px; margin-bottom: 5px;">
+				<div class="row d-flex justify-content-center"
+					style="margin:10px 0px">
 					<a href="home.htm"> <img src="images/logo.png" alt="">
 					</a>
 				</div>

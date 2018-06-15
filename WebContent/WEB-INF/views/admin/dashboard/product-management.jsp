@@ -25,8 +25,8 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-2">
-				<div class="row"
-					style="margin-left: 40px; margin-top: 5px; margin-bottom: 5px;">
+				<div class="row d-flex justify-content-center"
+					style="margin:10px 0px">
 					<a href="home.htm"> <img src="images/logo.png" alt="">
 					</a>
 				</div>
@@ -59,8 +59,10 @@
 						</div>
 					</div>
 					<div class="offset-6 col-2">
-						<button type="button" class="btn btn-primary"
-							style="width: 100%; margin-top: 25px">Thêm sản phẩm</button>
+						<form action="admin/insert-product.htm" method="get">
+							<button type="submit" class="btn btn-primary"
+								style="width: 100%; margin-top: 25px">Thêm sản phẩm</button>
+						</form>
 					</div>
 				</div>
 				<div class="row" style="margin-bottom: 10px;">
@@ -79,7 +81,7 @@
 					</form>
 					<div class="sum-product"
 						style="font-weight: bold; margin-left: 30px; margin-top: 5px">
-						Tổng số: 30 sản phẩm</div>
+						Tổng số: ${totalProduct} sản phẩm</div>
 				</div>
 				<div class="row">
 					<table class="table table-striped">
@@ -98,7 +100,7 @@
 							<c:forEach var="productColor" items="${productList }">
 								<tr>
 									<td class="table-productid">${productColor.product.id }</td>
-									<td class="table-productname">${productColor.product.name }</td>
+									<td class="table-productname">${productColor.product.name}</td>
 									<td class="table-productcolor">${productColor.color }</td>
 									<td class="table-productprice"><fmt:formatNumber
 											type="number" pattern="###,###"
@@ -111,8 +113,8 @@
 									</a> <a data-toggle="modal" data-target="#deleteModal" href=""
 										title="${productColor.product.name }"
 										data-color="${productColor.color }" style="margin-left: 20px"
-										class="deleteProduct"> <i class="fa fa-trash" aria-hidden="true"
-											style="font-size: 25px"></i>
+										class="deleteProduct"> <i class="fa fa-trash"
+											aria-hidden="true" style="font-size: 25px"></i>
 									</a></td>
 								</tr>
 							</c:forEach>
@@ -186,11 +188,14 @@
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		$('.deleteProduct').click(function(){
-			var title = $(this).attr('title');
-			var data = $(this).data('color');
-			$('#deleteProductModal').text("Bạn thực sự muốn xóa sản phẩm "+title+" "+data+"?");
-		});
+		$('.deleteProduct').click(
+				function() {
+					var title = $(this).attr('title');
+					var data = $(this).data('color');
+					$('#deleteProductModal').text(
+							"Bạn thực sự muốn xóa sản phẩm " + title + " "
+									+ data + "?");
+				});
 	</script>
 </body>
 </html>

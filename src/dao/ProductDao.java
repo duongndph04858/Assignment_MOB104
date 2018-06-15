@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -111,6 +112,38 @@ public class ProductDao {
 		query.setParameter("priceMax", priceMax);
 		List<Product> list_product = query.list();
 		return list_product;
+	}
+	
+	public boolean inserProduct(Product product) {
+		Session session = factory.openSession();
+		Transaction tr = session.beginTransaction();
+		try {
+			session.save(product);
+			tr.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback();
+			return false;
+		}finally {
+			session.close();
+		}
+	}
+	
+	public boolean deleteProduct(Product product) {
+		Session session = factory.openSession();
+		Transaction tr = session.beginTransaction();
+		try {
+			session.delete(product);
+			tr.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback();
+			return false;
+		}finally {
+			session.close();
+		}
 	}
 	
 	

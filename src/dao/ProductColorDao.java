@@ -5,10 +5,12 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import entity.Product;
 import entity.ProductColors;
 
 @Component
@@ -19,7 +21,7 @@ public class ProductColorDao {
 
 	@Transactional
 	public ProductColors getProductColor(String productId, String color) {
-		Session session = factory.openSession();
+		Session session = factory.getCurrentSession();
 		String hql = "from ProductColors where product_id =:productId and color =:color";
 		Query query = session.createQuery(hql);
 		query.setParameter("productId", productId);
@@ -30,10 +32,51 @@ public class ProductColorDao {
 
 	@Transactional
 	public List<ProductColors> getAllProduct() {
-		Session session = factory.openSession();
+		Session session = factory.getCurrentSession();
 		String hql = "from ProductColors";
 		Query query = session.createQuery(hql);
 		List<ProductColors> listProduct = query.list();
 		return listProduct;
+	}
+
+	@Transactional
+	public int getAmountProduct() {
+		Session session = factory.getCurrentSession();
+		String hql = "select count(id) from ProductColors";
+		Query query = session.createQuery(hql);
+		int total = Integer.parseInt(query.uniqueResult() + "");
+		return total;
+	}
+
+	public boolean inserProductColor(ProductColors product) {
+		Session session = factory.openSession();
+		Transaction tr = session.beginTransaction();
+		try {
+			session.save(product);
+			tr.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback();
+			return false;
+		} finally {
+			session.close();
+		}
+	}
+
+	public boolean deleteProductColor(ProductColors product) {
+		Session session = factory.openSession();
+		Transaction tr = session.beginTransaction();
+		try {
+			session.delete(product);
+			tr.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback();
+			return false;
+		} finally {
+			session.close();
+		}
 	}
 }

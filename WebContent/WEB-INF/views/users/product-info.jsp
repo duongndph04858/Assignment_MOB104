@@ -188,7 +188,7 @@
 						<ul class="nav nav-pills" role="tablist">
 							<c:forEach var="p" items="${product.product_colors }"
 								varStatus="stt">
-								<li class="nav-item pick-color"><a 
+								<li class="nav-item pick-color"><a
 									class="nav-link pcolor ${((stt.index)==0)?'active':'' }"
 									data-toggle="pill" href="#${p.color }"><i
 										style="color: ${p.color}" class="fa fa-circle product-color"
@@ -199,7 +199,8 @@
 				</div>
 				<div class="row buy-product d-flex justify-content-center">
 					<div class="buy">
-						<a id="order" href="add-to-cart.htm?pID=${product.id}">Mua hàng</a>
+						<a id="order" href="add-to-cart.htm?pID=${product.id}">Mua
+							hàng</a>
 					</div>
 				</div>
 				<div class="row buy-product">
@@ -274,27 +275,17 @@
 				</div>
 				<div
 					style="border-top: 1px solid #000; margin-left: 5%; padding-top: 5%">
-					<c:forEach varStatus="stt" var="p"
-						items="${product.product_properties }">
-						<span class="properties"> Màn hình: ${p.monitor } pixels</span>
-						<br>
-						<span class="properties"> Hệ điều hành: ${p.os }<br>
-						</span>
-						<span class="properties"> Camera sau: ${p.camera } MP</span>
-						<br>
-						<span class="properties"> Camera trước: ${p.front_camera }
-							MP</span>
-						<br>
-						<span class="properties"> CPU: ${p.cpu } </span>
-						<br>
-						<span class="properties"> RAM: ${p.ram } GB</span>
-						<br>
-						<span class="properties"> Bộ nhớ trong: ${p.rom } GB</span>
-						<br>
-						<span class="properties"> Khe cắm sim: ${p.sim }</span>
-						<br>
-						<span class="properties"> Dung lượng pin: ${p.pin} mAh</span>
-					</c:forEach>
+					<span class="properties"> Màn hình: ${product.monitor }
+						pixels</span> <br> <span class="properties"> Hệ điều hành:
+						${product.os }<br>
+					</span> <span class="properties"> Camera sau: ${product.camera } MP</span>
+					<br> <span class="properties"> Camera trước:
+						${product.front_camera } MP</span> <br> <span class="properties">
+						CPU: ${product.cpu } </span> <br> <span class="properties">
+						RAM: ${product.ram } GB</span> <br> <span class="properties">
+						Bộ nhớ trong: ${product.rom } GB</span> <br> <span
+						class="properties"> Khe cắm sim: ${product.sim }</span> <br>
+					<span class="properties"> Dung lượng pin: ${product.pin} mAh</span>
 				</div>
 			</div>
 		</div>
@@ -321,16 +312,14 @@
 		type="text/javascript"></script>
 	<script src="js/validate.js"></script>
 	<script>
-			
-		$('#order').click(function(){
+		$('#order').click(function() {
 			var hr = $(this).attr('href');
-			if($('.pcolor').hasClass('active')){
-				 var href=	$('.pick-color .active').attr('href');
-				 var color = href.substr(1);
-				 $(this).attr('href',hr+'&color='+color);
+			if ($('.pcolor').hasClass('active')) {
+				var href = $('.pick-color .active').attr('href');
+				var color = href.substr(1);
+				$(this).attr('href', hr + '&color=' + color);
 			}
 		});
-		
 	</script>
 </body>
 </html>

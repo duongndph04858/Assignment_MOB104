@@ -39,10 +39,9 @@ public class ProductColors implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProductColors(int id, Product product, String color, String img_front, String img_behind,
+	public ProductColors(Product product, String color, String img_front, String img_behind,
 			String img_thickness) {
 		super();
-		this.id = id;
 		this.product = product;
 		this.color = color;
 		this.img_front = img_front;
