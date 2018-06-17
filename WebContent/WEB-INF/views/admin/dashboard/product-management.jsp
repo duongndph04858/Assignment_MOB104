@@ -48,7 +48,7 @@
 				<div class="row">
 					<div class="col-4 form-search">
 						<div class="input-group mb-3" style="margin-top: 25px">
-							<input type="text" class="form-control" placeholder="Search..."
+							<input type="text" id="filterInput" class="form-control" placeholder="Search..."
 								aria-label="Recipient's username"
 								aria-describedby="basic-addon2">
 							<div class="input-group-append">
@@ -66,19 +66,19 @@
 					</div>
 				</div>
 				<div class="row" style="margin-bottom: 10px;">
-					<form action="" class="form-inline">
+					<%-- <form action="filter-by-producer.htm" class="form-inline">
 						<div class="form-group">
 							<label for="sel">Hãng:</label> <select class="form-control"
-								id="sel" name="sellist" style="margin-left: 20px;">
-								<option>Tất cả</option>
-								<option>Apple</option>
-								<option>Samsung</option>
-								<option>Oppo</option>
-								<option>Xiaomi</option>
-								<option>Sony</option>
+								id="sel" name="sellist" style="margin-left: 20px;" onchange="this.form.submit()">
+								<option value="1" ${(sellist eq '1')?'selected':'' }>Tất cả</option>
+								<option value="2" ${(sellist eq '2')?'selected':'' }>Apple</option>
+								<option value="3" ${(sellist eq '3')?'selected':'' }>Samsung</option>
+								<option value="4" ${(sellist eq '4')?'selected':'' }>Oppo</option>
+								<option value="5" ${(sellist eq '5')?'selected':'' }>Xiaomi</option>
+								<option value="6" ${(sellist eq '6')?'selected':'' }>Sony</option>
 							</select>
 						</div>
-					</form>
+					</form> --%>
 					<div class="sum-product"
 						style="font-weight: bold; margin-left: 30px; margin-top: 5px">
 						Tổng số: ${totalProduct} sản phẩm</div>
@@ -96,7 +96,7 @@
 								<th class="table-productdetail">Chỉnh sửa</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="">
 							<c:forEach var="productColor" items="${productList }">
 								<tr>
 									<td class="table-productid">${productColor.product.id }</td>
@@ -196,6 +196,16 @@
 							"Bạn thực sự muốn xóa sản phẩm " + title + " "
 									+ data + "?");
 				});
+	</script>
+	<script>
+		$(document).ready(function(){
+			$("#filterInput").on("keyup", function() {
+				var value = $(this).val().toLowerCase();
+				$("tbody tr").filter(function() {
+					$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+				});
+			});
+		});
 	</script>
 </body>
 </html>

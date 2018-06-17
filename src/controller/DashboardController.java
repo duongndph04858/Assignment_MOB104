@@ -93,5 +93,25 @@ public class DashboardController {
 		}
 
 	}
+	
+	
+	@RequestMapping("filter-by-producer")
+	public String filterByProducer(ModelMap md, @RequestParam String sellist){
+		if(sellist.equals("1")) {
+			md.addAttribute("productList", productColorDao.getAllProduct());
+		} else if(sellist.equals("2")) {
+			md.addAttribute("productList", productColorDao.getProductByProducer("Apple"));
+		} else if(sellist.equals("3")) {
+			md.addAttribute("productList", productColorDao.getProductByProducer("Samsung"));
+		} else if(sellist.equals("4")) {
+			md.addAttribute("productList", productColorDao.getProductByProducer("OPPO"));
+		} else if(sellist.equals("5")) {
+			md.addAttribute("productList", productColorDao.getProductByProducer("Xiaomi"));
+		} else if(sellist.equals("6")) {
+			md.addAttribute("productList", productColorDao.getProductByProducer("Sony"));
+		}
+		md.addAttribute("sellist", sellist);
+		return "admin/dashboard/product-management";
+	}
 
 }

@@ -47,6 +47,16 @@ public class ProductColorDao {
 		int total = Integer.parseInt(query.uniqueResult() + "");
 		return total;
 	}
+	
+	@Transactional
+	public List<ProductColors> getProductByProducer(String producer){
+		Session session = factory.getCurrentSession();
+		String hql = "from ProductColors p where p.product.producer = :producer";
+		Query query = session.createQuery(hql);
+		query.setParameter("producer", producer);
+		List<ProductColors> listProduct = query.list();
+		return listProduct;
+	}
 
 	public boolean inserProductColor(ProductColors product) {
 		Session session = factory.openSession();
