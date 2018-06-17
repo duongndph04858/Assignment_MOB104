@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,5 +35,18 @@ public class PurchaseDao {
 		query.setParameter("purchase_no", purchase_no);
 		Purchase purchase = (Purchase) query.uniqueResult();
 		return purchase;
+	}
+	
+	public void insertPurchase(Purchase purchase) {
+		Session session = factory.openSession();
+		Transaction tr = session.beginTransaction();
+		try {
+			session.save(purchase);
+			tr.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
 	}
 }

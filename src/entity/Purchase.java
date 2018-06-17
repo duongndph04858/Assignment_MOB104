@@ -21,8 +21,6 @@ public class Purchase {
 	private int id;
 	@OneToMany(mappedBy="purchase_id",fetch  = FetchType.EAGER)
 	private Collection<PurchaseItem> purchase_item;
-	@Column(name="purchase_no")
-	private String purchase_no;
 	@ManyToOne
 	@JoinColumn(name="client_id")
 	private Users username;
@@ -39,12 +37,20 @@ public class Purchase {
 	
 	
 
-	public Purchase(int id, Collection<PurchaseItem> purchase_item, String purchase_no, Users username,
+	public Purchase(Collection<PurchaseItem> purchase_item, Users username,
 			String client_address, String client_phone, String status) {
 		super();
-		this.id = id;
 		this.purchase_item = purchase_item;
-		this.purchase_no = purchase_no;
+		this.username = username;
+		this.client_address = client_address;
+		this.client_phone = client_phone;
+		this.status = status;
+	}	
+
+
+
+	public Purchase(Users username, String client_address, String client_phone, String status) {
+		super();
 		this.username = username;
 		this.client_address = client_address;
 		this.client_phone = client_phone;
@@ -64,12 +70,6 @@ public class Purchase {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getPurchase_no() {
-		return purchase_no;
-	}
-	public void setPurchase_no(String purchase_no) {
-		this.purchase_no = purchase_no;
 	}
 	public Users getUsername() {
 		return username;
