@@ -36,7 +36,7 @@ public class ProductDao {
 		List<Product> list_product = query.list();
 		return list_product;
 	}
-	
+
 	@Transactional
 	public List<Product> getByProducerDesc(String producer) {
 		Session session = factory.getCurrentSession();
@@ -101,7 +101,7 @@ public class ProductDao {
 		List<Product> list_product = query.list();
 		return list_product;
 	}
-	
+
 	@Transactional
 	public List<Product> getFilterByPriceDesc(String producer, long priceMin, long priceMax) {
 		Session session = factory.getCurrentSession();
@@ -113,23 +113,37 @@ public class ProductDao {
 		List<Product> list_product = query.list();
 		return list_product;
 	}
-	
-	public boolean inserProduct(Product product) {
+
+	public void insertProduct(Product product) {
 		Session session = factory.openSession();
 		Transaction tr = session.beginTransaction();
 		try {
 			session.save(product);
 			tr.commit();
-			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			tr.rollback();
-			return false;
-		}finally {
+
+		} finally {
 			session.close();
 		}
 	}
 	
+	public void updateProduct(Product product) {
+		Session session = factory.openSession();
+		Transaction tr = session.beginTransaction();
+		try {
+			session.update(product);
+			tr.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback();
+
+		} finally {
+			session.close();
+		}
+	}
+
 	public boolean deleteProduct(Product product) {
 		Session session = factory.openSession();
 		Transaction tr = session.beginTransaction();
@@ -141,35 +155,37 @@ public class ProductDao {
 			e.printStackTrace();
 			tr.rollback();
 			return false;
-		}finally {
+		} finally {
 			session.close();
 		}
 	}
 	
-	
-
-	// test sort
-	/*@Transactional
-	public List<Product> getByProducer(String producer, String sort) {
+	@Transactional
+	public int getAmountProduct() {
 		Session session = factory.getCurrentSession();
-		String hql = "from Product where producer=:producer order by price :sort";
+		String hql = "select sum(amount) from Product";
 		Query query = session.createQuery(hql);
-		query.setParameter("producer", producer);
-		query.setParameter("sort", sort);
-		List<Product> list_product = query.list();
-		return list_product;
+		int total = Integer.parseInt(query.uniqueResult() + "");
+		return total;
 	}
 
-	@Transactional
-	public List<Product> getFilterByPrice(String producer, long priceMin, long priceMax, String sort) {
-		Session session = factory.getCurrentSession();
-		String hql = "from Product where producer=:producer and price >= :priceMin and price <= :priceMax order by price :sort";
-		Query query = session.createQuery(hql);
-		query.setParameter("producer", producer);
-		query.setParameter("priceMin", priceMin);
-		query.setParameter("priceMax", priceMax);
-		query.setParameter("sort", sort);
-		List<Product> list_product = query.list();
-		return list_product;
-	}*/
+
+	// test sort
+	/*
+	 * @Transactional public List<Product> getByProducer(String producer, String
+	 * sort) { Session session = factory.getCurrentSession(); String hql =
+	 * "from Product where producer=:producer order by price :sort"; Query query =
+	 * session.createQuery(hql); query.setParameter("producer", producer);
+	 * query.setParameter("sort", sort); List<Product> list_product = query.list();
+	 * return list_product; }
+	 * 
+	 * @Transactional public List<Product> getFilterByPrice(String producer, long
+	 * priceMin, long priceMax, String sort) { Session session =
+	 * factory.getCurrentSession(); String hql =
+	 * "from Product where producer=:producer and price >= :priceMin and price <= :priceMax order by price :sort"
+	 * ; Query query = session.createQuery(hql); query.setParameter("producer",
+	 * producer); query.setParameter("priceMin", priceMin);
+	 * query.setParameter("priceMax", priceMax); query.setParameter("sort", sort);
+	 * List<Product> list_product = query.list(); return list_product; }
+	 */
 }

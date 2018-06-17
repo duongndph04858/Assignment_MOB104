@@ -3,8 +3,6 @@ package controller;
 import java.io.File;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -43,7 +41,7 @@ public class DashboardController {
 	@RequestMapping("dashboard/product-management")
 	public String productManagement(ModelMap md) {
 		md.addAttribute("productList", productColorDao.getAllProduct());
-		md.addAttribute("totalProduct", productColorDao.getAmountProduct());
+		md.addAttribute("totalProduct", productDao.getAmountProduct());
 		return "admin/dashboard/product-management";
 	}
 
@@ -75,43 +73,36 @@ public class DashboardController {
 				e.printStackTrace();
 			}
 		}
-		Product product = new Product(productID, productName, productPrice, brandList, productAmount, productMonitor,
-				productOS, productCamera, productFrontCamera, productCPU, productRAM, productROM, productSIM,
-				productPIN, productDescription);
-		boolean kq1 = productDao.inserProduct(product);
-		if (kq1 == true) {
-			ProductColors productColors = new ProductColors(product, colorList, productFrontImg.getOriginalFilename(),
-					productBehindImg.getOriginalFilename(), productThicknessImg.getOriginalFilename());
-			boolean kq = productColorDao.inserProductColor(productColors);
-			if (kq == true) {
-				return "redirect:/admin/dashboard/product-management.htm";
-			} else {
-				return "admin/dashboard/insert-product";
-			}
+		Product product = productDao.getProductByID(productID);
+		if (product == null) {
+			product = new Product(productID, productName, productPrice, brandList, productAmount, productMonitor,
+					productOS, productCamera, productFrontCamera, productCPU, productRAM, productROM, productSIM,
+					productPIN, productDescription);
+			productDao.insertProduct(product);
+		} else {
+			product = productDao.getProductByID(productID);
+			product.setAmount(product.getAmount() + productAmount);
+			productDao.updateProduct(product);
+		}
+		ProductColors productColors = new ProductColors(product, colorList, productFrontImg.getOriginalFilename(),
+				productBehindImg.getOriginalFilename(), productThicknessImg.getOriginalFilename());
+		boolean kq = productColorDao.insertProductColor(productColors);
+
+		if (kq == true) {
+			return "redirect:/admin/dashboard/product-management.htm";
 		} else {
 			return "admin/dashboard/insert-product";
 		}
 
 	}
-	
-	
-	@RequestMapping("filter-by-producer")
-	public String filterByProducer(ModelMap md, @RequestParam String sellist){
-		if(sellist.equals("1")) {
-			md.addAttribute("productList", productColorDao.getAllProduct());
-		} else if(sellist.equals("2")) {
-			md.addAttribute("productList", productColorDao.getProductByProducer("Apple"));
-		} else if(sellist.equals("3")) {
-			md.addAttribute("productList", productColorDao.getProductByProducer("Samsung"));
-		} else if(sellist.equals("4")) {
-			md.addAttribute("productList", productColorDao.getProductByProducer("OPPO"));
-		} else if(sellist.equals("5")) {
-			md.addAttribute("productList", productColorDao.getProductByProducer("Xiaomi"));
-		} else if(sellist.equals("6")) {
-			md.addAttribute("productList", productColorDao.getProductByProducer("Sony"));
-		}
-		md.addAttribute("sellist", sellist);
-		return "admin/dashboard/product-management";
+
+	@RequestMapping("edit-product")
+	public String editProduct(ModelMap md, @RequestParam String pID, @RequestParam String color) {
+		ProductColors product = productColorDao.getProductColor(pID, color);
+		md.addAttribute("editProduct", product);
+		return "admin/dashboard/edit-product";
 	}
+	
+	
 
 }
