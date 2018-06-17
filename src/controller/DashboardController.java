@@ -17,6 +17,7 @@ import dao.PurchaseDao;
 import dao.PurchaseItemDao;
 import entity.Product;
 import entity.ProductColors;
+import entity.Purchase;
 
 @Controller
 @RequestMapping("/admin/")
@@ -111,7 +112,28 @@ public class DashboardController {
 	public String updateOrder(ModelMap md, @RequestParam String purID) {
 		int purchaseID = Integer.parseInt(purID);
 		md.addAttribute("purItemList", purchaseItemDao.getPurchaseItem(purchaseID));
+		Purchase purchase = purchaseDao.getPurchasebyId(purchaseID);
+		String status = purchase.getStatus();
+		md.addAttribute("status", status);
+		md.addAttribute("purID", purID);
 		return "admin/dashboard/update-order";
+	}
+	
+	@RequestMapping(value="update-status", method=RequestMethod.POST)
+	public String updateStatus(@RequestParam String purID, @RequestParam String statusList) {
+		int id = Integer.parseInt(purID);
+		Purchase purchase = purchaseDao.getPurchasebyId(id);
+		String status;
+		if(statusList.equals("1")) {
+			status = "Đang xử lý";
+		} else if(statusList.equals("2")) {
+			status = "Đang vận chuyển";
+		} else {
+			status = "Đã giao hàng";
+		}
+		purchase.setStatus(status);
+		purchaseDao.updatePurchase(purchase);
+		return "redirect:/admin/dashboard/order-management.htm";
 	}
 
 }
