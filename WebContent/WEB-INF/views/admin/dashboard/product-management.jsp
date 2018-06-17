@@ -48,7 +48,7 @@
 				<div class="row">
 					<div class="col-4 form-search">
 						<div class="input-group mb-3" style="margin-top: 25px">
-							<input type="text" class="form-control" placeholder="Search..."
+							<input type="text" id="filterInput" class="form-control" placeholder="Search..."
 								aria-label="Recipient's username"
 								aria-describedby="basic-addon2">
 							<div class="input-group-append">
@@ -66,19 +66,6 @@
 					</div>
 				</div>
 				<div class="row" style="margin-bottom: 10px;">
-					<form action="" class="form-inline">
-						<div class="form-group">
-							<label for="sel">Hãng:</label> <select class="form-control"
-								id="sel" name="sellist" style="margin-left: 20px;">
-								<option>Tất cả</option>
-								<option>Apple</option>
-								<option>Samsung</option>
-								<option>Oppo</option>
-								<option>Xiaomi</option>
-								<option>Sony</option>
-							</select>
-						</div>
-					</form>
 					<div class="sum-product"
 						style="font-weight: bold; margin-left: 30px; margin-top: 5px">
 						Tổng số: ${totalProduct} sản phẩm</div>
@@ -198,5 +185,15 @@
 									+ data + "?");
 				});
 	</script>
+	 <script>
+		$(document).ready(function(){
+			  $("#filterInput").on("keyup", function() {
+				    var value = $(this).val().toLowerCase();
+				    $("tbody tr").filter(function() {
+				      	$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+				    });
+			  });
+		});
+</script> 
 </body>
 </html>

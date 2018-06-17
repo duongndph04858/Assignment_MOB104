@@ -47,7 +47,7 @@
 				<div class="row">
 					<div class="col-4 form-search">
 						<div class="input-group mb-3" style="margin-top: 25px">
-							<input type="text" class="form-control" placeholder="Search..."
+							<input type="text" id="filterInput" class="form-control" placeholder="Search..."
 								aria-label="Recipient's username"
 								aria-describedby="basic-addon2">
 							<div class="input-group-append">
@@ -78,7 +78,7 @@
 									<td class="table-address">${purchase.client_address }</td>
 									<td class="table-phone">${purchase.client_phone }</td>
 									<td class="table-status">${purchase.status }</td>
-									<td class="table-purchasedetail"><a href="#"> <i
+									<td class="table-purchasedetail"><a href="admin/update-order.htm?purID=${purchase.id}"> <i
 											class="fa fa-pencil-square" aria-hidden="true"
 											style="font-size: 25px"></i>
 									</a></td>
@@ -128,5 +128,15 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+		<script>
+		$(document).ready(function(){
+			  $("#filterInput").on("keyup", function() {
+				    var value = $(this).val().toLowerCase();
+				    $("tbody tr").filter(function() {
+				      	$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+				    });
+			  });
+		});
+</script> 
 </body>
 </html>
