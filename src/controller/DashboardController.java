@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import dao.ProductColorDao;
 import dao.ProductDao;
 import dao.PurchaseDao;
+import dao.PurchaseItemDao;
 import entity.Product;
 import entity.ProductColors;
 
@@ -22,6 +23,9 @@ import entity.ProductColors;
 public class DashboardController {
 	@Autowired
 	PurchaseDao purchaseDao;
+	
+	@Autowired
+	PurchaseItemDao purchaseItemDao;
 
 	@Autowired
 	ProductColorDao productColorDao;
@@ -103,6 +107,11 @@ public class DashboardController {
 		return "admin/dashboard/edit-product";
 	}
 	
-	
+	@RequestMapping("update-order")
+	public String updateOrder(ModelMap md, @RequestParam String purID) {
+		int purchaseID = Integer.parseInt(purID);
+		md.addAttribute("purItemList", purchaseItemDao.getPurchaseItem(purchaseID));
+		return "admin/dashboard/update-order";
+	}
 
 }
