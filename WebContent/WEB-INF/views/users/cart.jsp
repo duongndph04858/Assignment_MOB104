@@ -17,7 +17,7 @@
 	<div class="container">
 		<jsp:include page="patterns/_head.jsp"></jsp:include>
 		<jsp:include page="patterns/_menu.jsp"></jsp:include>
-		<div class="row">
+			<div class="row">
 			<div style="padding: 0; padding-right: 5px" class="col-6 banner">
 				<div id="banner1" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner">
@@ -77,7 +77,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div style="margin-left: 0" class="row">
 			<div style="margin-top: 20px; width: 100%" class="row">
 				<a class="product-name">Giỏ hàng</a>
 			</div>
@@ -85,7 +85,8 @@
 				<c:choose>
 					<c:when test="${shop.size() ==0 }">
 					<div  style="width: 100%;text-align: center;">
-						<h2><a href="home.htm">Giỏ hàng trống, quay lại mua hàng</a></h2>
+						<img alt="" src="images/cart-empty-0x260.png">
+						<h3><a href="home.htm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Giỏ hàng trống, quay lại mua hàng</a></h3>
 					</div>
 					</c:when>
 					<c:otherwise>
@@ -126,27 +127,16 @@
 								</c:forEach>
 							</tbody>
 						</table>
-						<h2>${total}</h2>
+						<div style="width: 100%;margin-bottom: 15px;" class="d-flex justify-content-right">
+						<h3>Tổng cộng: ${total} &nbsp; &nbsp;</h3>
+						<form action="order.htm">
+						<button type="submit" class="btn btn-warning">Tiến hành thanh toán</button>
+						</form>
+						</div>
+						
 					</c:otherwise>
 				</c:choose>
 			</div>
-		</div>
-		<div class="row page-navigation justify-content-center">
-			<nav aria-label="Page navigation example">
-			<ul class="pagination ">
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-						<span class="sr-only">Previous</span>
-				</a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-						class="sr-only">Next</span>
-				</a></li>
-			</ul>
-			</nav>
 		</div>
 		<div class="row footer">
 			<div class="col-2 logo-footer">

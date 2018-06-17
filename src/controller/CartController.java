@@ -33,7 +33,6 @@ public class CartController {
 		}
 		cartDao.addToCart(new Cart(pID, productColor,color),color);
 		session.setAttribute("shop", cartDao);
-		System.out.println(cartDao.getTotalPrice());
 		session.setAttribute("total", cartDao.getTotalPrice());
 		return "users/cart";
 		
@@ -43,5 +42,11 @@ public class CartController {
 	public String removeToCart(@RequestParam String pID,@RequestParam String color,HttpSession session) {
 		cartDao.removeToCart(pID, color);
 		return "users/cart";
+	}
+	
+	@RequestMapping("order")
+	public String order(ModelMap md) {
+		md.addAttribute("total", cartDao.getTotalPrice());
+		return "users/order";
 	}
 }
