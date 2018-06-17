@@ -1,7 +1,6 @@
 package dao;
 
 import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,26 +16,26 @@ public class PurchaseDao {
 
 	@Autowired
 	SessionFactory factory;
-	
+
 	@Transactional
-	public List<Purchase> getAllPurchase(){
+	public List<Purchase> getAllPurchase() {
 		Session session = factory.getCurrentSession();
 		String hql = "from Purchase";
 		Query query = session.createQuery(hql);
-		List<Purchase> purchases =  query.list();
+		List<Purchase> purchases = query.list();
 		return purchases;
 	}
-	
+
 	@Transactional
-	public Purchase getPurchasebyId(String purchase_no){
+	public Purchase getPurchasebyId(int id) {
 		Session session = factory.getCurrentSession();
-		String hql = "from Purchase where purchase_no = :purchase_no";
+		String hql = "from Purchase where id = :id";
 		Query query = session.createQuery(hql);
-		query.setParameter("purchase_no", purchase_no);
+		query.setParameter("id", id);
 		Purchase purchase = (Purchase) query.uniqueResult();
 		return purchase;
 	}
-	
+
 	public void insertPurchase(Purchase purchase) {
 		Session session = factory.openSession();
 		Transaction tr = session.beginTransaction();
@@ -45,7 +44,22 @@ public class PurchaseDao {
 			tr.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
+			session.close();
+		}
+	}
+
+	public void updatePurchase(Purchase purchase) {
+		Session session = factory.openSession();
+		Transaction tr = session.beginTransaction();
+		try {
+			session.update(purchase);
+			tr.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback();
+
+		} finally {
 			session.close();
 		}
 	}

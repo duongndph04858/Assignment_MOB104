@@ -9,8 +9,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import entity.Purchase;
 import entity.PurchaseItem;
 
 @Component
@@ -42,5 +40,4 @@ public class PurchaseItemDao {
 			session.close();
 		}
 	}
-
 }

@@ -42,7 +42,7 @@
                 <div class="row d-flex justify-content-center" style="font-size: 50px;">
                     Thông tin đơn hàng
                 </div>
-                <form action="">
+                <form action="admin/update-status.htm?purID=${purID }" method="post">
                     <table align="center" class="table table-striped">
                         <thead>
                             <tr align="center">
@@ -78,10 +78,10 @@
                     <h2></h2>
                     <div class="form-group form-inline row">
                         <label for="status-order" class="col-1">Trạng thái:</label>
-                        <select class="form-control col-2" id="status-order" name="statusList">
-                            <option>Đang xử lý</option>
-                            <option>Đang vận chuyển</option>
-                            <option>Đã giao hàng</option>
+                        <select class="form-control col-2" id="status-order" name="statusList" onchange="this.form.submit()">
+                            <option value="1" ${(status eq 'Đang xử lý')?'selected':'' }>Đang xử lý</option>
+                            <option value="2" ${(status eq 'Đang vận chuyển')?'selected':'' }>Đang vận chuyển</option>
+                            <option value="3" ${(status eq 'Đã giao hàng')?'selected':'' }>Đã giao hàng</option>
                         </select>
                     </div>
                 </form>
