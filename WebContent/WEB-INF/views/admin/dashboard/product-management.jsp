@@ -95,7 +95,7 @@
 									<td class="table-productbrand">${productColor.product.producer }</td>
 									<td class="table-productamount">${productColor.product.amount }</td>
 									<td class="table-productdetail"><a
-										href="edit-product.htm?pID=${productColor.product.id}&color=${productColor.color}">
+										href="admin/edit-product.htm?pID=${productColor.product.id}&color=${productColor.color}">
 											<i class="fa fa-pencil-square" aria-hidden="true"
 											style="font-size: 25px"></i>
 									</a> <a data-toggle="modal" data-target="#deleteModal" href=""

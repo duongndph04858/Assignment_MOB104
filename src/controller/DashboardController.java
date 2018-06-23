@@ -24,7 +24,7 @@ import entity.Purchase;
 public class DashboardController {
 	@Autowired
 	PurchaseDao purchaseDao;
-	
+
 	@Autowired
 	PurchaseItemDao purchaseItemDao;
 
@@ -107,7 +107,73 @@ public class DashboardController {
 		md.addAttribute("editProduct", product);
 		return "admin/dashboard/edit-product";
 	}
-	
+
+	@RequestMapping("update-product")
+	public String updateProduct(@RequestParam String productID, @RequestParam String productName,
+			@RequestParam long productPrice, @RequestParam String brandList, @RequestParam int productAmount,
+			@RequestParam String colorList, @RequestParam String productMonitor, @RequestParam String productOS,
+			@RequestParam String productCamera, @RequestParam String productFrontCamera,
+			@RequestParam String productCPU, @RequestParam String productRAM, @RequestParam String productROM,
+			@RequestParam String productSIM, @RequestParam String productPIN,
+			@RequestParam(value = "productDescription", defaultValue = "", required = false) String productDescription,
+			@RequestParam MultipartFile productFrontImg, @RequestParam MultipartFile productBehindImg,
+			@RequestParam MultipartFile productThicknessImg) {
+		if (!(productFrontImg.isEmpty() || productBehindImg.isEmpty() || productThicknessImg.isEmpty())) {
+			try {
+				String productFrontImgPath = context.getRealPath("/images/" + productFrontImg.getOriginalFilename());
+				productFrontImg.transferTo(new File(productFrontImgPath));
+				String productBehindImgPath = context.getRealPath("/images/" + productBehindImg.getOriginalFilename());
+				productBehindImg.transferTo(new File(productBehindImgPath));
+				String productThicknessImgPath = context
+						.getRealPath("/images/" + productThicknessImg.getOriginalFilename());
+				productThicknessImg.transferTo(new File(productThicknessImgPath));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		Product product = productDao.getProductByID(productID);
+		if (product != null) {
+			product.setName(productName);
+			product.setPrice(productPrice);
+			product.setProducer(brandList);
+			product.setAmount(productAmount);
+			product.setCamera(productCamera);
+			product.setFront_camera(productFrontCamera);
+			product.setMonitor(productMonitor);
+			product.setCpu(productCPU);
+			product.setRam(productRAM);
+			product.setRom(productROM);
+			product.setSim(productSIM);
+			product.setPin(productPIN);
+			product.setDescription(productDescription);
+			productDao.updateProduct(product);
+
+		}
+		ProductColors productColors = productColorDao.getProductColorByID(productID);
+		boolean kq = false;
+		if (productColors != null) {
+			productColors.setColor(colorList);
+			productColors.setProduct(product);
+			if (!(productFrontImg.getOriginalFilename().isEmpty())) {
+				productColors.setImg_front(productFrontImg.getOriginalFilename());
+			}
+			if (!(productBehindImg.getOriginalFilename().isEmpty())) {
+				productColors.setImg_behind(productBehindImg.getOriginalFilename());
+			}
+			if (!(productThicknessImg.getOriginalFilename().isEmpty())) {
+				productColors.setImg_thickness(productThicknessImg.getOriginalFilename());
+			}
+			kq = productColorDao.updateProductColor(productColors);
+		}
+
+		if (kq == true) {
+			return "redirect:/admin/dashboard/product-management.htm";
+		} else {
+			return "admin/dashboard/insert-product";
+		}
+
+	}
+
 	@RequestMapping("update-order")
 	public String updateOrder(ModelMap md, @RequestParam String purID) {
 		int purchaseID = Integer.parseInt(purID);
@@ -118,15 +184,15 @@ public class DashboardController {
 		md.addAttribute("purID", purID);
 		return "admin/dashboard/update-order";
 	}
-	
-	@RequestMapping(value="update-status", method=RequestMethod.POST)
+
+	@RequestMapping(value = "update-status", method = RequestMethod.POST)
 	public String updateStatus(@RequestParam String purID, @RequestParam String statusList) {
 		int id = Integer.parseInt(purID);
 		Purchase purchase = purchaseDao.getPurchasebyId(id);
 		String status;
-		if(statusList.equals("1")) {
+		if (statusList.equals("1")) {
 			status = "Đang xử lý";
-		} else if(statusList.equals("2")) {
+		} else if (statusList.equals("2")) {
 			status = "Đang vận chuyển";
 		} else {
 			status = "Đã giao hàng";

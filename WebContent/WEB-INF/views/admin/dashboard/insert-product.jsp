@@ -15,7 +15,6 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/add-new-product.css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -53,7 +52,7 @@
 								<div class="form-group form-inline row">
 									<label for="productID" class="col-3">Mã sản phẩm:</label> <input
 										type="text" class="form-control col-9" id="productID"
-										name="productID" >
+										name="productID">
 								</div>
 								<div class="form-group form-inline row">
 									<label for="productName" class="col-3">Tên sản phẩm:</label> <input
@@ -149,27 +148,35 @@
 									<br>
 									<div style="margin-bottom: 10px"
 										class="d-flex justify-content-center">
-										<img src="images/default-image.jpg" alt="" height="180px">
+										<img id="preview1" src="images/default-image.jpg" alt=""
+											height="180px">
 									</div>
-									<input type="file" class="form-control-file border"
-										name="productFrontImg">
+									<input
+										onchange="updateImageDisplay('image_uploads1','preview1');"
+										id="image_uploads1" type="file"
+										class="form-control-file border" name="productFrontImg">
 								</div>
 								<div class="form-group" style="width: 100%">
 									<label style="padding: 0" class="col-3">Ảnh mặt sau:</label> <br>
 									<div style="margin-bottom: 10px"
 										class="d-flex justify-content-center">
-										<img src="images/default-image.jpg" alt="" height="180px">
+										<img id="preview2" src="images/default-image.jpg" alt=""
+											height="180px">
 									</div>
-									<input type="file" class="form-control-file border"
-										name="productBehindImg">
+									<input id="image_uploads2" type="file"
+										onchange="updateImageDisplay('image_uploads2','preview2');"
+										class="form-control-file border" name="productBehindImg">
 								</div>
 								<div class="form-group" style="width: 100%">
 									<label style="padding: 0" class="col-3">Ảnh độ dày:</label> <br>
 									<div style="margin-bottom: 10px"
 										class="d-flex justify-content-center">
-										<img src="images/default-image.jpg" alt="" height="180px">
+										<img id="preview3" src="images/default-image.jpg" alt=""
+											height="180px">
 									</div>
-									<input type="file" class="form-control-file border"
+									<input id="image_uploads3" type="file"
+										class="form-control-file border"
+										onchange="updateImageDisplay('image_uploads3','preview3');"
 										name="productThicknessImg">
 								</div>
 							</div>
@@ -203,5 +210,6 @@
 	<script
 		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
 		type="text/javascript"></script>
+	<script type="text/javascript" src="js/imgPreview.js"></script>
 </body>
 </html>

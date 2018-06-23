@@ -42,7 +42,7 @@
 			</div>
 			<div class="col-10">
 				<div class="row d-flex justify-content-center"
-					style="font-size: 50px;">Thêm sản phẩm</div>
+					style="font-size: 50px;">Sửa sản phẩm</div>
 				<div class="row form-add-product">
 					<form action="admin/update-product.htm" method="post"
 						enctype="multipart/form-data" id="form-add-new-product"
@@ -53,7 +53,8 @@
 								<div class="form-group form-inline row">
 									<label for="productID" class="col-3">Mã sản phẩm:</label> <input
 										type="text" class="form-control col-9" id="productID"
-										name="productID" value="${editProduct.product.id }">
+										name="productID" readonly="readonly"
+										value="${editProduct.product.id }">
 								</div>
 								<div class="form-group form-inline row">
 									<label for="productName" class="col-3">Tên sản phẩm:</label> <input
@@ -68,11 +69,16 @@
 								<div class="form-group form-inline row">
 									<label for="brand" class="col-3">Hãng sản xuất:</label> <select
 										class="form-control col-9" id="brand" name="brandList">
-										<option ${(editProduct.product.producer eq 'Apple')?'selected'?'' }>Apple</option>
-										<option ${(editProduct.product.producer eq 'OPPO')?'selected'?'' }>Oppo</option>
-										<option ${(editProduct.product.producer eq 'Samsung')?'selected'?'' }>Samsung</option>
-										<option ${(editProduct.product.producer eq 'Sony')?'selected'?'' }>Sony</option>
-										<option ${(editProduct.product.producer eq 'Xiaomi')?'selected'?'' }>Xiaomi</option>
+										<option
+											${(editProduct.product.producer eq 'Apple')?'selected':'' }>Apple</option>
+										<option
+											${(editProduct.product.producer eq 'OPPO')?'selected':'' }>Oppo</option>
+										<option
+											${(editProduct.product.producer eq 'Samsung')?'selected':'' }>Samsung</option>
+										<option
+											${(editProduct.product.producer eq 'Sony')?'selected':'' }>Sony</option>
+										<option
+											${(editProduct.product.producer eq 'Xiaomi')?'selected':'' }>Xiaomi</option>
 									</select>
 								</div>
 								<div class="form-group form-inline row">
@@ -83,19 +89,20 @@
 								<div class="form-group form-inline row">
 									<label for="color" class="col-3">Màu sắc:</label> <select
 										class="form-control col-9" id="color" name="colorList">
-										<option ${(editProduct.color eq 'gold')?'selected'?'' }>Gold</option>
-										<option ${(editProduct.color eq 'black')?'selected'?'' }>Black</option>
-										<option ${(editProduct.color eq 'silver')?'selected'?'' }>Silver</option>
-										<option ${(editProduct.color eq 'pink')?'selected'?'' }>Pink</option>
-										<option ${(editProduct.color eq 'blue')?'selected'?'' }>Blue</option>
-										<option ${(editProduct.color eq 'purple')?'selected'?'' }>Purple</option>
-										<option ${(editProduct.color eq 'red')?'selected'?'' }>Red</option>
+										<option ${(editProduct.color eq 'Gold')?'selected':'' }>Gold</option>
+										<option ${(editProduct.color eq 'Black')?'selected':'' }>Black</option>
+										<option ${(editProduct.color eq 'Silver')?'selected':'' }>Silver</option>
+										<option ${(editProduct.color eq 'Pink')?'selected':'' }>Pink</option>
+										<option ${(editProduct.color eq 'Blue')?'selected':'' }>Blue</option>
+										<option ${(editProduct.color eq 'Purple')?'selected':'' }>Purple</option>
+										<option ${(editProduct.color eq 'Red')?'selected':'' }>Red</option>
 									</select>
 								</div>
 								<div class="form-group form-inline row">
 									<label for="productMonitor" class="col-3">Độ phân giải:</label>
 									<input type="text" class="form-control col-9"
-										id="productMonitor" name="productMonitor" value="${editProduct.product.monitor }">
+										id="productMonitor" name="productMonitor"
+										value="${editProduct.product.monitor }">
 								</div>
 								<div class="form-group form-inline row">
 									<label for="productOS" class="col-3">Hệ điều hành:</label> <input
@@ -110,7 +117,8 @@
 								<div class="form-group form-inline row">
 									<label for="productFrontCamera" class="col-3">Camera
 										trước:</label> <input type="text" class="form-control col-9"
-										id="productFrontCamera" name="productFrontCamera" value="${editProduct.product.front_camera }">
+										id="productFrontCamera" name="productFrontCamera"
+										value="${editProduct.product.front_camera }">
 								</div>
 								<div class="form-group form-inline row">
 									<label for="productCPU" class="col-3">CPU:</label> <input
@@ -140,7 +148,8 @@
 								<div class="form-group form-inline row">
 									<label for="productDescription" class="col-3">Mô tả:</label> <input
 										type="text" class="form-control col-9" id="productDescription"
-										name="productDescription" value="${editProduct.product.description }">
+										name="productDescription"
+										value="${editProduct.product.description }">
 								</div>
 							</div>
 							<div class="col-5">
@@ -149,27 +158,37 @@
 									<br>
 									<div style="margin-bottom: 10px"
 										class="d-flex justify-content-center">
-										<img src="images/${editProduct.img_front}" alt="" height="180px">
+										<img id="preview1" id="image_uploads1"
+											src="images/${editProduct.img_front}" alt="" height="180px">
+										<div id="preview1"></div>
 									</div>
-									<input type="file" class="form-control-file border"
+									<input id="image_uploads1" type="file"
+										class="form-control-file border"
+										onchange="updateImageDisplay('image_uploads1','preview1');"
 										name="productFrontImg">
 								</div>
 								<div class="form-group" style="width: 100%">
 									<label style="padding: 0" class="col-3">Ảnh mặt sau:</label> <br>
 									<div style="margin-bottom: 10px"
 										class="d-flex justify-content-center">
-										<img src="images/${editProduct.img_behind}" alt="" height="180px">
+										<img id="preview2" src="images/${editProduct.img_behind}"
+											alt="" height="180px">
 									</div>
-									<input type="file" class="form-control-file border"
+									<input id="image_uploads2" type="file"
+										class="form-control-file border"
+										onchange="updateImageDisplay('image_uploads2','preview2');"
 										name="productBehindImg">
 								</div>
 								<div class="form-group" style="width: 100%">
 									<label style="padding: 0" class="col-3">Ảnh độ dày:</label> <br>
 									<div style="margin-bottom: 10px"
 										class="d-flex justify-content-center">
-										<img src="images/${editProduct.img_thickness}" alt="" height="180px">
+										<img id="preview3" src="images/${editProduct.img_thickness}"
+											alt="" height="180px">
 									</div>
-									<input type="file" class="form-control-file border"
+									<input id="image_uploads3" type="file"
+										class="form-control-file border"
+										onchange="updateImageDisplay('image_uploads3','preview3');"
 										name="productThicknessImg">
 								</div>
 							</div>
@@ -202,5 +221,6 @@
 	<script
 		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
 		type="text/javascript"></script>
+	<script type="text/javascript" src="js/imgPreview.js"></script>
 </body>
 </html>

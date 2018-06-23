@@ -73,7 +73,7 @@
 						<tbody>
 							<c:forEach var="purchase" items="${orderList }">
 								<tr>
-									<td class="table-purchaseid">${purchase.purchase_no }</td>
+									<td class="table-purchaseid">${purchase.id }</td>
 									<td class="table-customername">${purchase.username.fullname }</td>
 									<td class="table-address">${purchase.client_address }</td>
 									<td class="table-phone">${purchase.client_phone }</td>
