@@ -1,11 +1,13 @@
 package controller;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,10 +23,12 @@ public class HomeController {
 	@Autowired
 	ProductDao product_dao;
 	@Autowired
-	UsersDao userDao;
-	
-	@RequestMapping(value = "home")
-	public String home(ModelMap md, @RequestParam(value = "start", defaultValue = "0") int start) {
+	UsersDao userDao;	
+	@Autowired
+	JavaMailSender mailer;
+
+	@RequestMapping(value="home")
+	public String home(ModelMap md,@RequestParam(value="start",defaultValue="0")int start) {
 		List<Product> list_All = product_dao.getAll();
 		List<Product> lst_AllperPage = product_dao.getAllPerPage(start);
 		md.addAttribute("lst", lst_AllperPage);
@@ -178,4 +182,29 @@ public class HomeController {
 		md.addAttribute("producer", producer);
 		return "users/product";
 	}
+	
+	@RequestMapping("change-pass")
+	public String changePass() {
+		return "users/change-pass";
+	}
+	
+	@RequestMapping("send")
+	public String send(ModelMap md, HttpSession session, @RequestParam String emailQMK) {
+		try {
+			String ma = "kyph";
+			session.setAttribute("ma", ma);
+			MimeMessage mail = mailer.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(mail);
+			helper.setFrom("kypham1894@gmail.com");
+			helper.setTo(emailQMK);
+			helper.setSubject("Mã xác nhận quên mật khẩu");
+			helper.setText("Mã xác nhận của bạn là "+ma,true);
+			mailer.send(mail);
+			md.addAttribute("message", "Gửi email thành công!");
+		} catch (Exception e) {
+			md.addAttribute("message", "Gửi email thất bại!"+e);
+		}
+		return "redirect:/change-pass.htm";
+	}
+	
 }

@@ -15,6 +15,7 @@ $().ready(function () {
                     },
                     "productAmount": {
                         required: true,
+                        number: true,
                     },
                     "productMonitor": {
                         required: true,
@@ -33,15 +34,19 @@ $().ready(function () {
                     },
                     "productRAM": {
                         required: true,
+                        number: true,
                     },
                     "productROM": {
                         required: true,
+                        number: true,
                     },
                     "productSIM": {
                         required: true,
+                        number: true,
                     },
                     "productPIN": {
                         required: true,
+                        number: true,
                     }
                 },
                 messages: {
@@ -56,6 +61,7 @@ $().ready(function () {
                     },
                     "productAmount": {
                         required: "Vui lòng không bỏ trống trường này!",
+                        number: "Vui lòng nhập số lượng là số",
                     },
                     "productMonitor": {
                         required: "Vui lòng không bỏ trống trường này!",
@@ -74,15 +80,19 @@ $().ready(function () {
                     },
                     "productRAM": {
                         required: "Vui lòng không bỏ trống trường này!",
+                        number: "Vui lòng nhập dung lượng RAM là số",
                     },
                     "productROM": {
                         required: "Vui lòng không bỏ trống trường này!",
+                        number: "Vui lòng nhập dung lượng ROM là số",
                     },
                     "productSIM": {
                         required: "Vui lòng không bỏ trống trường này!",
+                        number: "Vui lòng nhập số khe cắm SIM là số",
                     },
                     "productPIN": {
                         required: "Vui lòng không bỏ trống trường này!",
+                        number: "Vui lòng nhập dung lượng PIN là số",
                     }
                 }
             });
