@@ -1,3 +1,4 @@
+
 $().ready(function() {
 	$("#form-register").validate({
 		onfocusout : false,
@@ -70,3 +71,4 @@ $().ready(function() {
 	});
 
 });
+
