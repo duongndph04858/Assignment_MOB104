@@ -53,7 +53,7 @@ label.error {
 				<div class="row d-flex justify-content-center"
 					style="font-size: 50px;">Sửa sản phẩm</div>
 				<div class="row form-add-product">
-					<form id="form-edit-product" action="admin/update-product.htm" method="post"
+					<form id="form-edit-product" action="admin/update-product.htm?color=${editProduct.color}" method="post"
 						enctype="multipart/form-data" id="form-add-new-product"
 						style="width: 100%">
 						<h3>Thông tin cơ bản</h3>

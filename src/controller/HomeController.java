@@ -54,6 +54,11 @@ public class HomeController {
 		return "users/search";
 	}
 	
+	@RequestMapping("user-infor")
+	public String userInfor() {
+		return "users/user-infor";
+	}
+	
 	
 	
 	/*@RequestMapping(value="filter")

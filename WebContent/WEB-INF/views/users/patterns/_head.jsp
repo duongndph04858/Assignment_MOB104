@@ -36,7 +36,7 @@
 					<li style="list-style: none; float: left;" id="user"><a>&nbsp;
 							Xin chào, ${user.fullname }</a>
 						<ul class="user-action">
-							<li style="list-style: none"><a class="action-item"><i
+							<li style="list-style: none"><a href="user-infor.htm" class="action-item"><i
 									style="font-size: 20px" class="fa fa-address-card-o"
 									aria-hidden="true"></i> &nbsp; Thông tin cá nhân&nbsp;&nbsp;</a></li>
 
