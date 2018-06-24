@@ -4,7 +4,7 @@
 <html>
 <head>
 <base href="${pageContext.servletContext.contextPath}/">
-<title>Access Denied</title>
+<title>Đặt lại mật khẩu</title>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -54,38 +54,48 @@
 				</a>
 			</div>
 		</div>
-		<div class="row">
-			<p>${ma}</p>
-			<form action="send.htm">
-				<div class="form-group row">
-					<label for="newpass" class="col-2 col-form-label">Mật khẩu
-						mới: </label>
-					<div class="col-10">
-						<input name="newpass" type="password" class="form-control"
-							id="newpass">
+		<div style="margin: 15px" class="row">
+			<div style="border-bottom: 1px solid #ccc;" class="col-4">
+				<h4>Đặt lại mật khẩu</h4>
+			</div>
+		</div>
+		<div style="margin-bottom: 15px" class="row">
+			<div class="col-6">
+				<form action="change-pass.htm">
+					<div class="form-group row">
+						<label for="newpass" class="col-3 col-form-label">Mật khẩu
+							mới: </label>
+						<div class="col-9">
+							<input name="newpass" type="password" class="form-control"
+								id="newpass">
+						</div>
 					</div>
-				</div>
-				<div class="form-group row">
-					<label for="renewpass" class="col-2 col-form-label">Nhập
-						lại: </label>
-					<div class="col-10">
-						<input name="renewpass" type="password" class="form-control"
-							id="renewpass">
+					<div class="form-group row">
+						<label for="renewpass" class="col-3 col-form-label">Nhập
+							lại: </label>
+						<div class="col-9">
+							<input name="renewpass" type="password" class="form-control"
+								id="renewpass">
+						</div>
 					</div>
-				</div>
-				<div class="form-group row">
-					<label for="maXacNhan" class="col-2 col-form-label">Mã xác
-						nhận: </label>
-					<div class="col-10">
-						<input name="maXacNhan" type="text" class="form-control"
-							id="maXacNhan">
+					<div class="form-group row">
+						<label for="maXacNhan" class="col-3 col-form-label">Mã xác
+							nhận: </label>
+						<div class="col-9">
+							<input name="maXacNhan" type="text" class="form-control"
+								id="maXacNhan">
+						</div>
 					</div>
-				</div>
-				<button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
-			</form>
+					<div style="width: 100%" class="d-flex justify-content-center">
+						<button type="submit" class="btn btn-primary">Đổi mật
+							khẩu</button>
+					</div>
+				</form>
+			</div>
+
 
 		</div>
-		<div class="row footer">
+		<div style="margin-top: 10px" class="row footer">
 			<div class="col-2 logo-footer">
 				<img src="images/logo.png" alt="">
 			</div>

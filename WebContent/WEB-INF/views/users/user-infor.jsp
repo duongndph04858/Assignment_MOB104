@@ -64,6 +64,11 @@
 					<div class="col-3">Ngày sinh:</div>
 					<div class="col-9">${user.birthday }</div>
 				</div>
+				<div class="row user-infor">
+					<div style="color: red">
+						${errorr }
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="row footer">

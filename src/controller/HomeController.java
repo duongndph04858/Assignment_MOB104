@@ -1,6 +1,8 @@
 package controller;
 
 import java.util.List;
+import java.util.Random;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
@@ -23,12 +25,12 @@ public class HomeController {
 	@Autowired
 	ProductDao product_dao;
 	@Autowired
-	UsersDao userDao;	
+	UsersDao userDao;
 	@Autowired
 	JavaMailSender mailer;
 
-	@RequestMapping(value="home")
-	public String home(ModelMap md,@RequestParam(value="start",defaultValue="0")int start) {
+	@RequestMapping(value = "home")
+	public String home(ModelMap md, @RequestParam(value = "start", defaultValue = "0") int start) {
 		List<Product> list_All = product_dao.getAll();
 		List<Product> lst_AllperPage = product_dao.getAllPerPage(start);
 		md.addAttribute("lst", lst_AllperPage);
@@ -73,18 +75,26 @@ public class HomeController {
 
 	@RequestMapping("change-password")
 	public String changePassword(@RequestParam String oldPassword, @RequestParam String newPassword,
-			@RequestParam String rePassword,HttpServletRequest request) {
+			@RequestParam String rePassword, HttpServletRequest request, ModelMap md) {
 		HttpSession session = request.getSession();
-		Users user = (Users)session.getAttribute("user");
-		if(user.getPassword().equals(oldPassword) && newPassword.equals(rePassword)) {
+		Users user = (Users) session.getAttribute("user");
+		if (user.getPassword().equals(oldPassword) && newPassword.equals(rePassword)) {
 			user.setPassword(newPassword);
-			boolean kq= userDao.updateUser(user);
-			if(kq==true) {
+			boolean kq = userDao.updateUser(user);
+			if (kq == true) {
 				return "redirect:/logout.htm";
-			}else {
-				return "users/user-infor";
+			} else {
+				md.addAttribute("errorr", "Đổi mật khẩu thất bại!");
+				if (!(user.getPassword().equals(oldPassword))) {
+					md.addAttribute("changeError", "Bạn nhập mật khẩu cũ không chính xác!");
+					return "users/user-infor";
+				} else {
+					md.addAttribute("changeError", "Mật khẩu và nhập lại mật khẩu không khớp !");
+					return "users/user-infor";
+				}
+
 			}
-		}else {
+		} else {
 			return "users/user-infor";
 		}
 	}
@@ -182,29 +192,54 @@ public class HomeController {
 		md.addAttribute("producer", producer);
 		return "users/product";
 	}
-	
+
 	@RequestMapping("change-pass")
-	public String changePass() {
+	public String changePass(ModelMap md, HttpServletRequest request, @RequestParam String newpass,
+			@RequestParam String renewpass, @RequestParam int maXacNhan) {
+		HttpSession session = request.getSession();
+		int ma = (int) session.getAttribute("ma");
+		String username = (String) session.getAttribute("fogot-username");
+		Users user = userDao.getUSER(username);
+		if (newpass.equals(renewpass) && ma == maXacNhan) {
+			user.setPassword(newpass);
+			userDao.updateUser(user);
+			return "redirect:/logout.htm";
+		} else {
+			md.addAttribute("changeErorr", "Mã xác nhận không chính xác hoặc mật khẩu không khớp!");
+			return "change-pass";
+		}
+
+	}
+
+	@RequestMapping("verify-change-pass")
+	public String verifyChangePass() {
 		return "users/change-pass";
 	}
-	
+
 	@RequestMapping("send")
 	public String send(ModelMap md, HttpSession session, @RequestParam String emailQMK) {
-		try {
-			String ma = "kyph";
-			session.setAttribute("ma", ma);
-			MimeMessage mail = mailer.createMimeMessage();
-			MimeMessageHelper helper = new MimeMessageHelper(mail);
-			helper.setFrom("kypham1894@gmail.com");
-			helper.setTo(emailQMK);
-			helper.setSubject("Mã xác nhận quên mật khẩu");
-			helper.setText("Mã xác nhận của bạn là "+ma,true);
-			mailer.send(mail);
-			md.addAttribute("message", "Gửi email thành công!");
-		} catch (Exception e) {
-			md.addAttribute("message", "Gửi email thất bại!"+e);
+		String username = userDao.getUserName(emailQMK);
+		if (username != null) {
+			try {
+				Random random = new Random();
+				int ma = random.nextInt(99999) + 1;
+				session.setAttribute("ma", ma);
+				session.setAttribute("fogot-username", username);
+				MimeMessage mail = mailer.createMimeMessage();
+				MimeMessageHelper helper = new MimeMessageHelper(mail);
+				helper.setFrom("kypham1894@gmail.com");
+				helper.setTo(emailQMK);
+				helper.setSubject("Mã xác nhận quên mật khẩu");
+				helper.setText("Mã xác nhận của bạn là " + ma, true);
+				mailer.send(mail);
+				md.addAttribute("message", "Gửi email thành công!");
+			} catch (Exception e) {
+				md.addAttribute("message", "Gửi email thất bại!" + e);
+			}
+			return "redirect:/verify-change-pass.htm";
+		} else {
+			return "redirect:/logout.htm";
 		}
-		return "redirect:/change-pass.htm";
 	}
-	
+
 }

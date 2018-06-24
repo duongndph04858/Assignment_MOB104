@@ -31,6 +31,16 @@ public class UsersDao {
 		return usr;
 	}
 	
+	@Transactional
+	public String getUserName(String email){
+		Session session = factory.getCurrentSession();
+		String hql = "select username from Users where email =:email";
+		Query query =  session.createQuery(hql);
+		query.setParameter("email", email);
+		String username = (String) query.uniqueResult();
+		return username;
+	}
+	
 	public void insertUser(Users user) {
 		Session  session = factory.openSession();
 		Transaction tr = session.beginTransaction();
