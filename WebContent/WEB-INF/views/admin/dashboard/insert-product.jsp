@@ -9,12 +9,14 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 <style type="text/css">
 label.error {
 	color: red;
@@ -37,7 +39,7 @@ label.error {
 				<div class="row" style="width: 100%">
 					<div class="row" style="width: 100%">
 						<div class="nav flex-column nav-pills" style="width: 100%">
-							<a class="nav-link active"
+							<a class="nav-link"
 								href="admin/dashboard/product-management.htm">Quản lý sản
 								phẩm</a> <a class="nav-link"
 								href="admin/dashboard/order-management.htm">Quản lý đơn hàng</a>
@@ -206,7 +208,11 @@ label.error {
 	</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	<script src="js/jquery-3.2.1.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
 	<script
@@ -219,7 +225,7 @@ label.error {
 		crossorigin="anonymous"></script>
 	<script
 		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
-		type="text/javascript"></script>
+		type="text/javascript"></script> -->
 	<script src="js/validate-insert-product.js"></script>
 	<script type="text/javascript" src="js/imgPreview.js"></script>
 

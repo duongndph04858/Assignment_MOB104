@@ -12,6 +12,7 @@ $().ready(function () {
                     },
                     "productPrice": {
                         required: true,
+                        number: true,
                     },
                     "productAmount": {
                         required: true,
@@ -58,6 +59,7 @@ $().ready(function () {
                     },
                     "productPrice": {
                         required: "Vui lòng không bỏ trống trường này!",
+                        number: "Vui lòng nhập giá là số",
                     },
                     "productAmount": {
                         required: "Vui lòng không bỏ trống trường này!",
