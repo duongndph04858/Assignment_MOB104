@@ -11,8 +11,9 @@
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 <link rel="stylesheet" href="css/index.css">
 <style type="text/css">
 .user-infor {
@@ -60,7 +61,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row footer">
+		<div class="row footer" style="margin-top: 240px;">
 			<div class="col-2 logo-footer">
 				<img src="images/logo.png" alt="">
 			</div>
@@ -80,9 +81,10 @@
 	<script src="js/jquery-3.2.1.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script
+	<script src="js/jquery.validate.min.js"></script>
+	<!-- <script
 		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
-		type="text/javascript"></script>
+		type="text/javascript"></script> -->
 	<script src="js/validate.js"></script>
 </body>
 </html>
