@@ -90,6 +90,12 @@
 						<h3><a href="home.htm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Giỏ hàng trống, quay lại mua hàng</a></h3>
 					</div>
 					</c:when>
+					<c:when test="${shop eq null }">
+					<div  style="width: 100%;text-align: center;">
+						<img alt="" src="images/cart-empty-0x260.png">
+						<h3><a href="home.htm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Giỏ hàng trống, quay lại mua hàng</a></h3>
+					</div>
+					</c:when>
 					<c:otherwise>
 						<table align="center" class="table table-striped">
 							<thead>
