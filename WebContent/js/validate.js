@@ -1,4 +1,20 @@
 $().ready(function () {
+	
+	$("#formXXX").validate({
+        onfocusout: false,
+        onkeyup: false,
+        onclick: false,
+        rules: {
+            "productID": {
+                required: true,
+            }
+        },
+        messages: {
+            "productID": {
+            	required: "Vui lòng không bỏ trống trường này!",
+            }
+        }
+    });
             $("#form-register").validate({
                 onfocusout: false,
                 onkeyup: false,
@@ -68,5 +84,8 @@ $().ready(function () {
                     }
                 }
             });
+            
+            
+            
             
         });

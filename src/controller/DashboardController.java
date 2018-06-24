@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import dao.ProductColorDao;
 import dao.ProductDao;
 import dao.PurchaseDao;
@@ -155,7 +154,7 @@ public class DashboardController {
 			productDao.updateProduct(product);
 
 		}
-		ProductColors productColors = productColorDao.getProductColorByID(productID);
+		ProductColors productColors = productColorDao.getProductColor(productID, colorList);
 		boolean kq = false;
 		if (productColors != null) {
 			productColors.setColor(colorList);
@@ -209,8 +208,28 @@ public class DashboardController {
 	}
 
 	@RequestMapping("delete-product")
-	public String deleteProduct(@RequestParam String pID) {
-		return "redirect:/admin/dashboard/product-management.htm";
+	public String deleteProduct(ModelMap md, @RequestParam String pID, @RequestParam String color) {
+		ProductColors productColor = productColorDao.getProductColor(pID, color);
+		System.out.println("===================================");
+		try {
+			boolean kq= false;
+			if (productColor != null) {
+				System.out.println(productColor.getId());
+				kq= productColorDao.deleteProductColor(productColor);
+				if(kq==true) {
+					return "redirect:/admin/dashboard/product-management.htm";
+				}else {
+					return "redirect:/home.htm";
+				}
+			}else {
+				System.out.println("null here");
+				return "redirect:/admin/dashboard/order-management.htm";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			md.addAttribute("deleteError", "Không thể xóa sản phẩm này!");
+			return "";
+		}
 	}
 
 }

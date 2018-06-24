@@ -26,7 +26,7 @@
 		<div class="row">
 			<div class="col-2">
 				<div class="row d-flex justify-content-center"
-					style="margin:10px 0px">
+					style="margin: 10px 0px">
 					<a href="home.htm"> <img src="images/logo.png" alt="">
 					</a>
 				</div>
@@ -47,8 +47,8 @@
 				<div class="row">
 					<div class="col-4 form-search">
 						<div class="input-group mb-3" style="margin-top: 25px">
-							<input type="text" id="filterInput" class="form-control" placeholder="Search..."
-								aria-label="Recipient's username"
+							<input type="text" id="filterInput" class="form-control"
+								placeholder="Search..." aria-label="Recipient's username"
 								aria-describedby="basic-addon2">
 							<div class="input-group-append">
 								<button class="btn btn-outline-secondary" type="button">
@@ -71,6 +71,11 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:if test="${orderList.size() ==0 }">
+								<tr>
+									<h3>Chưa giao dịch nào được thực hiện</h3>
+								</tr>
+							</c:if>
 							<c:forEach var="purchase" items="${orderList }">
 								<tr>
 									<td class="table-purchaseid">${purchase.id }</td>
@@ -78,7 +83,8 @@
 									<td class="table-address">${purchase.client_address }</td>
 									<td class="table-phone">${purchase.client_phone }</td>
 									<td class="table-status">${purchase.status }</td>
-									<td class="table-purchasedetail"><a href="admin/update-order.htm?purID=${purchase.id}"> <i
+									<td class="table-purchasedetail"><a
+										href="admin/update-order.htm?purID=${purchase.id}"> <i
 											class="fa fa-pencil-square" aria-hidden="true"
 											style="font-size: 25px"></i>
 									</a></td>
@@ -128,15 +134,30 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
-		<script>
-		$(document).ready(function(){
-			  $("#filterInput").on("keyup", function() {
-				    var value = $(this).val().toLowerCase();
-				    $("tbody tr").filter(function() {
-				      	$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-				    });
-			  });
-		});
-</script> 
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$("#filterInput")
+									.on(
+											"keyup",
+											function() {
+												var value = $(this).val()
+														.toLowerCase();
+												$("tbody tr")
+														.filter(
+																function() {
+																	$(this)
+																			.toggle(
+																					$(
+																							this)
+																							.text()
+																							.toLowerCase()
+																							.indexOf(
+																									value) > -1)
+																});
+											});
+						});
+	</script>
 </body>
 </html>
