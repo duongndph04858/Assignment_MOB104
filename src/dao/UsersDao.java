@@ -44,4 +44,20 @@ public class UsersDao {
 			session.close();
 		}
 	}
+	
+	public boolean updateUser(Users user) {
+		Session  session = factory.openSession();
+		Transaction tr = session.beginTransaction();
+		try {
+			session.update(user);
+			tr.commit();	
+			return true;
+		} catch (Exception e) {
+			tr.rollback();
+			e.printStackTrace();
+			return false;
+		}finally {
+			session.close();
+		}
+	}
 }
