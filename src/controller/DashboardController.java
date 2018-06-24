@@ -210,25 +210,18 @@ public class DashboardController {
 	@RequestMapping("delete-product")
 	public String deleteProduct(ModelMap md, @RequestParam String pID, @RequestParam String color) {
 		ProductColors productColor = productColorDao.getProductColor(pID, color);
-		System.out.println("===================================");
-		try {
-			boolean kq= false;
-			if (productColor != null) {
-				System.out.println(productColor.getId());
-				kq= productColorDao.deleteProductColor(productColor);
-				if(kq==true) {
-					return "redirect:/admin/dashboard/product-management.htm";
-				}else {
-					return "redirect:/home.htm";
-				}
-			}else {
-				System.out.println("null here");
-				return "redirect:/admin/dashboard/order-management.htm";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			md.addAttribute("deleteError", "Không thể xóa sản phẩm này!");
-			return "";
+		Product product = productDao.getProductByID(pID);
+		boolean kq = false;
+		if (product.getProduct_colors().size() == 1) {
+			kq = productColorDao.deleteProductColor(productColor);
+			productDao.deleteProduct(product);
+		} else {
+			kq = productColorDao.deleteProductColor(productColor);
+		}
+		if (kq == true) {
+			return "redirect:/admin/dashboard/product-management.htm";
+		} else {
+			return "redirect:/home.htm";
 		}
 	}
 

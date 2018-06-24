@@ -144,17 +144,15 @@ public class ProductDao {
 		}
 	}
 
-	public boolean deleteProduct(Product product) {
+	public void deleteProduct(Product product) {
 		Session session = factory.openSession();
 		Transaction tr = session.beginTransaction();
 		try {
 			session.delete(product);
 			tr.commit();
-			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			tr.rollback();
-			return false;
 		} finally {
 			session.close();
 		}

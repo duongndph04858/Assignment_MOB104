@@ -59,7 +59,7 @@
 			</div>
 		</div>
 		<div class="row product-list">
-			<c:forEach var="p" items="${lst_AllperPage}" varStatus="status">
+			<c:forEach var="p" items="${lst}" varStatus="status">
 				<div class="col-4">
 					<a class="product-infomation" href="product-info.htm?pId=${p.id}">
 						<div class="product-div">

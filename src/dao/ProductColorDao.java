@@ -94,4 +94,15 @@ public class ProductColorDao {
 			session.close();
 		}
 	}
+	
+	@Transactional
+	public List<ProductColors> getAllPerPage(int start) {
+		Session session = factory.getCurrentSession();
+		String hql = "from Product";
+		Query query = session.createQuery(hql);
+		query.setFirstResult(start);
+		query.setMaxResults(9);
+		List<ProductColors> list_product = query.list();
+		return list_product;
+	}
 }

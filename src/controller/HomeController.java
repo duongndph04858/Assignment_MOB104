@@ -19,7 +19,7 @@ public class HomeController {
 	public String home(ModelMap md,@RequestParam(value="start",defaultValue="0")int start) {
 		List<Product> list_All = product_dao.getAll();
 		List<Product> lst_AllperPage= product_dao.getAllPerPage(start);
-		md.addAttribute("lst_AllperPage", lst_AllperPage);
+		md.addAttribute("lst", lst_AllperPage);
 		int pageNumber = Math.round(list_All.size()/9);
 		md.addAttribute("pageNumber",pageNumber );
 		md.addAttribute("startIndex", start);

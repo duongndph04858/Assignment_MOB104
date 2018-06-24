@@ -1,6 +1,4 @@
 package entity;
-
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +14,7 @@ public class Product {
 	@Column(name="id")
 	private String id;
 	@OneToMany(mappedBy="product",fetch= FetchType.EAGER)
-	private List<ProductColors> product_colors = new ArrayList<>();
+	private List<ProductColors> product_colors;
 	@Column(name="name")
 	private String name;
 	@Column(name="price")
