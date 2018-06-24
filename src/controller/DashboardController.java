@@ -56,7 +56,7 @@ public class DashboardController {
 	}
 
 	@RequestMapping("insertProduct")
-	public String insertProduct(@RequestParam String productID, @RequestParam String productName,
+	public String insertProduct(ModelMap md, @RequestParam String productID, @RequestParam String productName,
 			@RequestParam long productPrice, @RequestParam String brandList, @RequestParam int productAmount,
 			@RequestParam String colorList, @RequestParam String productMonitor, @RequestParam String productOS,
 			@RequestParam String productCamera, @RequestParam String productFrontCamera,
@@ -89,10 +89,16 @@ public class DashboardController {
 			product.setAmount(product.getAmount() + productAmount);
 			productDao.updateProduct(product);
 		}
-		ProductColors productColors = new ProductColors(product, colorList, productFrontImg.getOriginalFilename(),
-				productBehindImg.getOriginalFilename(), productThicknessImg.getOriginalFilename());
-		boolean kq = productColorDao.insertProductColor(productColors);
-
+		ProductColors productColors = productColorDao.getProductColor(productID, colorList);
+		boolean kq = false;
+		if (productColors == null) {
+			productColors = new ProductColors(product, colorList, productFrontImg.getOriginalFilename(),
+					productBehindImg.getOriginalFilename(), productThicknessImg.getOriginalFilename());
+			kq = productColorDao.insertProductColor(productColors);
+		} else {
+			md.addAttribute("insertError", "Sản phẩm đã tồn tại!");
+			return "admin/dashboard/insert-product";
+		}
 		if (kq == true) {
 			return "redirect:/admin/dashboard/product-management.htm";
 		} else {
@@ -200,6 +206,11 @@ public class DashboardController {
 		purchase.setStatus(status);
 		purchaseDao.updatePurchase(purchase);
 		return "redirect:/admin/dashboard/order-management.htm";
+	}
+
+	@RequestMapping("delete-product")
+	public String deleteProduct(@RequestParam String pID) {
+		return "redirect:/admin/dashboard/product-management.htm";
 	}
 
 }

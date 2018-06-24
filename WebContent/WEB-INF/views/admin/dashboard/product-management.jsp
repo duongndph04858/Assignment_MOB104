@@ -99,6 +99,7 @@
 											<i class="fa fa-pencil-square" aria-hidden="true"
 											style="font-size: 25px"></i>
 									</a> <a data-toggle="modal" data-target="#deleteModal" href=""
+									data-id="${productColor.id}"
 										title="${productColor.product.name }"
 										data-color="${productColor.color }" style="margin-left: 20px"
 										class="deleteProduct"> <i class="fa fa-trash"
@@ -151,8 +152,8 @@
 					</div>
 					<div id="deleteProductModal" class="modal-body"></div>
 					<div class="modal-footer">
-						<form action="delete-product.htm" method="post">
-							<button type="submit" class="btn btn-danger">Đồng ý</button>
+						<form id="form-delete" action="delete-product.htm" method="post">
+							<button type="submit"  class="btn btn-danger">Đồng ý</button>
 							<button type="button" class="btn btn-primary"
 								data-dismiss="modal">Hủy bỏ</button>
 						</form>
@@ -180,9 +181,11 @@
 				function() {
 					var title = $(this).attr('title');
 					var data = $(this).data('color');
+					var id = $(this).data('id');
 					$('#deleteProductModal').text(
 							"Bạn thực sự muốn xóa sản phẩm " + title + " "
 									+ data + "?");
+					$('#form-delete').attr('action','admin/delete-product?pID='+id);
 				});
 	</script>
 	 <script>

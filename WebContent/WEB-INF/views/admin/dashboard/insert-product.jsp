@@ -42,6 +42,7 @@
 			<div class="col-10">
 				<div class="row d-flex justify-content-center"
 					style="font-size: 50px;">Thêm sản phẩm</div>
+					<div style="color: red">${insertError }</div>
 				<div class="row form-add-product">
 					<form action="admin/insertProduct.htm" method="post"
 						enctype="multipart/form-data" id="form-add-new-product"
