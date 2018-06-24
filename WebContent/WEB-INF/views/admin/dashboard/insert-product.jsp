@@ -44,7 +44,7 @@
 					style="font-size: 50px;">Thêm sản phẩm</div>
 					<div style="color: red">${insertError }</div>
 				<div class="row form-add-product">
-					<form id="formXXX" action="admin/insertProduct.htm" method="post"
+					<form action="admin/insertProduct.htm" method="post"
 						enctype="multipart/form-data" id="form-add-new-product"
 						style="width: 100%">
 						<h3>Thông tin cơ bản</h3>
@@ -211,7 +211,6 @@
 	<script
 		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
 		type="text/javascript"></script>
-		<script src="js/validate.js"></script>	
 	<script type="text/javascript" src="js/imgPreview.js"></script>
 </body>
 </html>
