@@ -82,12 +82,12 @@
 				</div>
 			</div>
 		</div>
-		<form style="width: 100%" action="pay.htm" method="post"
+		<form id="form-pay" style="width: 100%" action="pay.htm" method="post"
 			enctype="multipart/form-data" id="form-add-new-product">
 			<div class="row">
 				<div class="col-4">
 					<a class="product-name"> Thông tin giao hàng </a>
-					<div style="border-bottom: 1px solid #c4c0c0; padding-bottom: 5%"
+					<div style="padding-bottom: 5%"
 						class="row">
 						<div style="margin-top: 20px; width: 100%; padding-left: 15px">
 							<div style="width: 100%">
@@ -123,12 +123,12 @@
 				<div class="col-4">
 					<a class="product-name" style="visibility: hidden"> Thông tin
 						giao hàng </a>
-					<div style="border-bottom: 1px solid #c4c0c0; padding-bottom: 5%"
+					<div style="padding-bottom: 5%"
 						class="row">
 
 						<div style="margin-top: 20px; width: 100%">
 							<div style="width: 100%">
-								<label for="clientName">Xã/Thị trấn:</label>
+								<label>Xã/Thị trấn:</label>
 							</div>
 							<div style="width: 100%">
 								<input name="xa" type="text" class="form-control col-9">
@@ -136,14 +136,14 @@
 
 
 							<div style="width: 100%">
-								<label for="clientPhone">Quận/Huyện:</label>
+								<label>Quận/Huyện:</label>
 							</div>
 							<div style="width: 100%">
 								<input type="text" class="form-control col-9">
 							</div>
 
 							<div style="width: 100%">
-								<label for="clientAddress">Tỉnh/Thành Phố:</label>
+								<label>Tỉnh/Thành Phố:</label>
 							</div>
 							<div style="width: 100%">
 								<input type="text" class="form-control col-9">
@@ -195,7 +195,7 @@
 		</form>
 
 
-		<div class="row footer">
+		<div class="row footer" style="margin-top: 200px">
 			<div class="col-2 logo-footer">
 				<img src="images/logo.png" alt="">
 			</div>
@@ -213,5 +213,9 @@
 	<script src="js/jquery-3.2.1.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script
+		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
+		type="text/javascript"></script>
+	<script src="js/validate-pay.js"></script>
 </body>
 </html>

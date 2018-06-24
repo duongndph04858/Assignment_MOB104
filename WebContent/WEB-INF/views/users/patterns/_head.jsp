@@ -244,30 +244,30 @@
 			aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="modalQuenMatKhauLabel">Quên mật
-							khẩu</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form>
-							<div class="form-group row">
-								<label for="staticEmail" class="col-2 col-form-label">Email:
-								</label>
-								<div class="col-10">
-									<input type="email" class="form-control" id="staticEmail">
-									<small id="emailHelp" class="form-text text-muted">Vui
-										lòng nhập email mà bạn đã đăng ký tài khoản!</small>
+					<form action="send.htm">
+						<div class="modal-header">
+							<h5 class="modal-title" id="modalQuenMatKhauLabel">Quên mật
+								khẩu</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+								<div class="form-group row">
+									<label for="staticEmail" class="col-2 col-form-label">Email:
+									</label>
+									<div class="col-10">
+										<input name="emailQMK" type="email" class="form-control" id="staticEmail">
+										<small id="emailHelp" class="form-text text-muted">Vui
+											lòng nhập email mà bạn đã đăng ký tài khoản!</small>
+									</div>
 								</div>
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary">Gửi yêu cầu</button>
-					</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">Gửi yêu cầu</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
