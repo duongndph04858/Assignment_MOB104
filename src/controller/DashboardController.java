@@ -114,7 +114,7 @@ public class DashboardController {
 	}
 
 	@RequestMapping("update-product")
-	public String updateProduct(@RequestParam String productID, @RequestParam String productName,
+	public String updateProduct(@RequestParam String color, @RequestParam String productID, @RequestParam String productName,
 			@RequestParam long productPrice, @RequestParam String brandList, @RequestParam int productAmount,
 			@RequestParam String colorList, @RequestParam String productMonitor, @RequestParam String productOS,
 			@RequestParam String productCamera, @RequestParam String productFrontCamera,
@@ -145,6 +145,7 @@ public class DashboardController {
 			product.setCamera(productCamera);
 			product.setFront_camera(productFrontCamera);
 			product.setMonitor(productMonitor);
+			product.setOs(productOS);
 			product.setCpu(productCPU);
 			product.setRam(productRAM);
 			product.setRom(productROM);
@@ -154,7 +155,7 @@ public class DashboardController {
 			productDao.updateProduct(product);
 
 		}
-		ProductColors productColors = productColorDao.getProductColor(productID, colorList);
+		ProductColors productColors = productColorDao.getProductColor(productID, color);
 		boolean kq = false;
 		if (productColors != null) {
 			productColors.setColor(colorList);
@@ -169,12 +170,11 @@ public class DashboardController {
 				productColors.setImg_thickness(productThicknessImg.getOriginalFilename());
 			}
 			kq = productColorDao.updateProductColor(productColors);
-		}
-
+		} 
 		if (kq == true) {
 			return "redirect:/admin/dashboard/product-management.htm";
 		} else {
-			return "admin/dashboard/insert-product";
+			return "admin/dashboard/edit-product";
 		}
 
 	}

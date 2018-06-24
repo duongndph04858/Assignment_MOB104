@@ -26,6 +26,11 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/admin/**"/>
 			<bean class="interceptor.AdminInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/user-infor.htm"/>
+			<mvc:mapping path="/order.htm"/>
+			<bean class="interceptor.UserInterceptor"/>
 		</mvc:interceptor>	
 	</mvc:interceptors>
 
