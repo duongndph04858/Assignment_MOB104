@@ -16,6 +16,15 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/add-new-product.css">
+<style type="text/css">
+label.error {
+	color: red;
+	line-height: 20px;
+	padding-top: 5px;
+	margin-left: 236px;
+	margin-bottom: 0px;
+}
+</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -44,7 +53,7 @@
 				<div class="row d-flex justify-content-center"
 					style="font-size: 50px;">Sửa sản phẩm</div>
 				<div class="row form-add-product">
-					<form action="admin/update-product.htm" method="post"
+					<form id="form-edit-product" action="admin/update-product.htm" method="post"
 						enctype="multipart/form-data" id="form-add-new-product"
 						style="width: 100%">
 						<h3>Thông tin cơ bản</h3>
@@ -221,6 +230,7 @@
 	<script
 		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"
 		type="text/javascript"></script>
+		<script src="js/validate-edit-product.js"></script>
 	<script type="text/javascript" src="js/imgPreview.js"></script>
 </body>
 </html>
